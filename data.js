@@ -4,6 +4,7 @@ Data file for user information
 
 const userData=[
     {
+        id: 0,
         username: "testerJester",
         email: "fake@email.unreal",
         password: "password",
