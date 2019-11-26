@@ -26,6 +26,29 @@ const userData=[
         leastfav: "fakeLeastFav"
 
 
-    }
+    },
+    {
+    id: 1,
+    username: "manu98",
+    password: "password",
+    artist1 : "mura masa",
+    artist2 : "local natives",
+    artist3 : "doja cat",
+    genre1 : "indie pop",
+    genre2 : "r&b",
+    genre3 : "chill",
+    raingenre : "indie folk",
+    workout1 : "500 miles",
+    workout2 : "monster",
+    workout3 : "jungle",
+    sadboi : "your shirt",
+    firstsong : "Lovesick",
+    momsong : "hello goodbye",
+    underalbum : "Soundtrack to a Death",
+    guiltygenre : "Bubblegum pop",
+    concertartist : "Anderson.Paak",
+    leastfav : "country",
+
+}
 
 ]
