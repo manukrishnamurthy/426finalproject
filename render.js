@@ -196,6 +196,8 @@ export const renderhomepage=function(){
 }
 export const renderuserprofile = function(user){
     //use user information from data.js or person object to construct user rpofile
+    // radhika 
+    // quiz button 
 }
 export const handleloginsubmit = function(event){
     //replaceWith(renderUserProfile(userData[whichever user it was]))
