@@ -1,58 +1,74 @@
+//const userData = require("./data");
+let personid = 0;
+// function getInfo() {
+//     let username = document.getElementById("#username");
 
+//     let email = document.getElementById("#email");
+//     alert(email)
+//     let password = document.getElementById("#password");
+//     let artist1 = document.getElementById("#artist1");
+//     let artist2 = document.getElementById("#artist2");
+//     let artist3 = document.getElementById("#artist3");
+//     let genre1 = document.getElementById("#genre1");
+//     let genre2 = document.getElementById("#genre2");
+//     let genre3 = document.getElementById("genre3");
+//     let raingenre = document.getElementById("RainGenre");
+//     let workout1 = document.getElementById("workout1");
+//     let workout2 = document.getElementById("workout2");
+//     let workout3 = document.getElementById("workout3");
+//     let sadboi = document.getElementById("sadboi");
+//     let firstsong = document.getElementById("firstsong");
+//     let momsong = document.getElementById("momsong");
+//     let underalbum = document.getElementById("underalbum");
+//     let guiltygenre = document.getElementById("guiltygenre");
+//     let concertartist = document.getElementById("concertartist");
+//     let leastfav = document.getElementById("leastfav");
 
-function getInfo() {
-    let username = document.getElementById("username");
-    let email = document.getElementById("email");
-    let password = document.getElementById("password");
-    let artist1 = document.getElementById("artist1");
-    let artist2 = document.getElementById("artist2");
-    let artist3 = document.getElementById("artist3");
-    let genre1 = document.getElementById("genre1");
-    let genre2 = document.getElementById("genre2");
-    let genre3 = document.getElementById("genre3");
-    let raingenre = document.getElementById("RainGenre");
-    let workout1 = document.getElementById("workout1");
-    let workout2 = document.getElementById("workout2");
-    let workout3 = document.getElementById("workout3");
-    let sadboi = document.getElementById("sadboi");
-    let firstsong = document.getElementById("firstsong");
-    let momsong = document.getElementById("momsong");
-    let underalbum = document.getElementById("underalbum");
-    let guiltygenre = document.getElementById("guiltygenre");
-    let concertartist = document.getElementById("concertartist");
-    let leastfav = document.getElementById("leastfav");
-
-    let person = new Object();
-    person.username = username;
-    person.email = email;
-    person.password = password;
-    person.artist1 = artist1;
-    person.artist2 = artist2;
-    person.artist3 = artist3;
-    person.genre1 = genre1;
-    person.genre2 = genre2;
-    person.genre3 = genre3;
-    person.raingenre = raingenre;
-    person.workout1 = workout1;
-    person.workout2 = workout2;
-    person.workout3 = workout3;
-    person.sadboi = sadboi;
-    person.firstsong = firstsong;
-    person.momsong = momsong;
-    person.underalbum = underalbum;
-    person.guiltygenre = guiltygenre;
-    person.concertartist = concertartist;
-    person.leastfav = leastfav;
-    for(let j = 0; j<userData.length; j++){
-        //check to make sure that account doesn't already exist
-    }
-    userData.append(person);
-    // Append the 'person' object to the data.js file with all of the users. Not sure how to link
-
-}
+//     let person = new Object();
+//     person.username = username;
+//     person.email = email;
+//     person.password = password;
+//     person.artist1 = artist1;
+//     person.artist2 = artist2;
+//     person.artist3 = artist3;
+//     person.genre1 = genre1;
+//     person.genre2 = genre2;
+//     person.genre3 = genre3;
+//     person.raingenre = raingenre;
+//     person.workout1 = workout1;
+//     person.workout2 = workout2;
+//     person.workout3 = workout3;
+//     person.sadboi = sadboi;
+//     person.firstsong = firstsong;
+//     person.momsong = momsong;
+//     person.underalbum = underalbum;
+//     person.guiltygenre = guiltygenre;
+//     person.concertartist = concertartist;
+//     person.leastfav = leastfav;
+//     let exists = 0;
+//     for(let j = 0; j<userData.length; j++){
+//       alert("hi")
+//       let maxid = 0;
+//         if(userData[j].email==person.email){
+//           alert("An account with that email has already been created, please try again");
+//           exists=1;
+//         }
+//         if(userData[j].id>maxid){
+//           maxid = userData[j].id;
+//         }
+//         //check to make sure that account doesn't already exist
+//     }
+//     if(exists==0){
+//       person.id = maxid+1;
+//     }
+//     //userData.append(person);
+//     // Append the 'person' object to the data.js file with all of the users. Not sure how to link
+//     personid = person.id;
+// }
 export const renderhomepage=function(){
     return `
     <section class="section has-background-primary" >
+    <form id="homepage">
     <div class="columns">
             <div class="column">
                 <h1 class="title has-text-white">Signup</h1>
@@ -163,7 +179,7 @@ export const renderhomepage=function(){
 
                     <div class="field">
                         <div class="control">
-                            <input class="button is-dark" id = "button" type="submit" onclick="getInfo()"/>
+                            <input class="button is-dark" id = "signupsubmit" type="submit" />
                         </div>
                     </div>
                 </form>
@@ -185,29 +201,70 @@ export const renderhomepage=function(){
                   </div>
                   <div class="field">
                       <div class="control">
-                          <input class="button is-dark" id = "loginsubmit" type="submit" onclick="getInfo()"/>
+                          <input class="button is-dark" id = "loginsubmit" type="submit"/>
                       </div>
                   </div>
                 </form>
           </div>
         
     </div>
+    </form>
     </section>`
 }
 export const renderuserprofile = function(user){
     //use user information from data.js or person object to construct user rpofile
     // radhika 
     // quiz button 
+    return`<div id="userprofile">
+      <h1 class="title is-1">${user.username}</h1>
+      <p>${user.genre1}</p>
+      <p>${user.genre2}</p>
+      <p>${user.genre3}</p>
+      <button class="button is-medium" style = "primary" data-id="${user.id}" id="renderquiz" type="quizbutton">Take Quiz</button>
+    </div>`
 }
-export const handleloginsubmit = function(event){
-    //replaceWith(renderUserProfile(userData[whichever user it was]))
+export const handleloginsubmit = async function(event){
+  event.preventDefault();
+  //getInfo();
+    const $homepage = $(event.target).closest('#homepage');
+    //console.log($homepage);
+    let infoarray = $homepage.serializeArray();
+    let person = {};
+    person.username = infoarray[0].value;
+    person.email = infoarray[1].value;
+    person.password = infoarray[2].value;
+    person.artist1 = infoarray[3].value;
+    person.artist2 = infoarray[4].value;
+    person.artist3 = infoarray[5].value;
+    person.genre1 = infoarray[6].value;
+    person.genre2 = infoarray[7].value;
+    person.genre3 = infoarray[8].value;
+    person.raingenre = infoarray[9].value;
+    person.workout1 = infoarray[10].value;
+    person.workout2 = infoarray[11].value;
+    person.workout3 = infoarray[12].value;
+    person.sadboi = infoarray[13].value;
+    person.firstsong = infoarray[14].value;
+    person.momsong = infoarray[15].value;
+    person.underalbum = infoarray[16].value;
+    person.guiltygenre = infoarray[17].value;
+    person.concertartist = infoarray[18].value;
+    person.leastfav = infoarray[19].value;
+    //console.log(infoarray);
+    //post request with person object info
+    // let usertorender = userData.find(user=>user.id===personid);
+    let userprofile = renderuserprofile(person);
+    
+    $homepage.replaceWith(userprofile);
+  //replaceWith(renderUserProfile(userData[whichever user it was]))
 }
 //on click submit button for login or signup - generate user profile - render html as jquery object, replace index with user profile object
 function main(){
     window.$root = $('#root');
     let homepage = renderhomepage();
     $root.append(homepage)
-    $root.on("click", "#submit", handleloginsubmit);
+    $root.on("click", "#loginsubmit", handleloginsubmit);
+    $root.on("click", "#signupsubmit", handleloginsubmit);
     //renders
 }
 main();
