@@ -211,6 +211,11 @@ export const renderhomepage=function(){
     </form>
     </section>`
 }
+export const renderquizpage = function(questions){
+  return `<div class="section">
+  <h1 class = "title">Twitter Quiz</h1>
+  </div>`
+}
 export const renderuserprofile = function(user){
     //use user information from data.js or person object to construct user rpofile
     // radhika 
@@ -225,13 +230,45 @@ export const renderuserprofile = function(user){
 }
 export const handleloginsubmit = async function(event){
   event.preventDefault();
+  const $homepage = $(event.target).closest('#homepage');
+  let infoarray = $homepage.serializeArray();
+  let username = infoarray[0];
+  let password = infoarray[1];
+  async function Login(){
+    const result = await axios({
+        method: 'post',
+        name: infoarray[0].value,
+        pass: infoarray[1].value,
+    });
+  }
+  let loginresponse = await Login();
+  let profiletorender = loginresponse.data;
+  //instead of for loop below, post request to login
+  // for(let i = 0; i<userData.length; i++){
+  //   if(username == userData[i].username){
+  //     renderuserprofile(userData[i])
+  //   }
+  // }
+  $homepage.replaceWith(renderuserprofile(profiletorender));
+}
+export const handlesignout = async function(event){
+  const $userprofile = $(event.target).closest('#homepage');
+  //axios request to backend to sign out
+  $userprofile.replaceWith(renderhomepage);
+}
+export const handlerenderquiz = async function(event){
+  const $userprofile = $(event.target).closest('#homepage');
+  $userprofile.replaceWith(renderhomepage)
+}
+export const handlesignupsubmit = async function(event){
+  event.preventDefault();
   //getInfo();
     const $homepage = $(event.target).closest('#homepage');
     //console.log($homepage);
     let infoarray = $homepage.serializeArray();
     let person = {};
-    person.username = infoarray[0].value;
-    person.email = infoarray[1].value;
+     person.username = infoarray[0].value;
+    // person.email = infoarray[1].value;
     person.password = infoarray[2].value;
     person.artist1 = infoarray[3].value;
     person.artist2 = infoarray[4].value;
@@ -250,6 +287,23 @@ export const handleloginsubmit = async function(event){
     person.guiltygenre = infoarray[17].value;
     person.concertartist = infoarray[18].value;
     person.leastfav = infoarray[19].value;
+    async function CreateAccount(){
+      const result = await axios({
+          method: 'post',
+          name: infoarray[0].value,
+          pass: infoarray[1].value,
+          data: person,
+      });
+    }
+    async function Login(){
+      const result = await axios({
+          method: 'post',
+          name: infoarray[0].value,
+          pass: infoarray[1].value,
+      });
+    }
+    await CreateAccount();
+    await Login();
     //console.log(infoarray);
     //post request with person object info
     // let usertorender = userData.find(user=>user.id===personid);
@@ -264,7 +318,9 @@ function main(){
     let homepage = renderhomepage();
     $root.append(homepage)
     $root.on("click", "#loginsubmit", handleloginsubmit);
-    $root.on("click", "#signupsubmit", handleloginsubmit);
+    $root.on("click", "#signupsubmit", handlesignupsubmit);
+    $root.on("click", "#signout", handlesignout);
+    $root.on("click", "#renderquiz", handlerenderquiz);
     //renders
 }
 main();
