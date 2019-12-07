@@ -236,7 +236,6 @@ export const handleloginsubmit = async function(event){
   let password = infoarray[1];
   async function Login(){
     const result = await axios({
-        method: 'post',
         name: infoarray[0].value,
         pass: infoarray[1].value,
     });
@@ -289,7 +288,6 @@ export const handlesignupsubmit = async function(event){
     person.leastfav = infoarray[19].value;
     async function CreateAccount(){
       const result = await axios({
-          method: 'post',
           name: infoarray[0].value,
           pass: infoarray[1].value,
           data: person,
@@ -297,7 +295,6 @@ export const handlesignupsubmit = async function(event){
     }
     async function Login(){
       const result = await axios({
-          method: 'post',
           name: infoarray[0].value,
           pass: infoarray[1].value,
       });
