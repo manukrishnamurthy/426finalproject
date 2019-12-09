@@ -218,14 +218,131 @@ export const renderquizpage = function(questions){
 }
 export const renderuserprofile = function(user){
     //use user information from data.js or person object to construct user rpofile
-    // radhika 
-    // quiz button 
-    return`<div id="userprofile">
-      <h1 class="title is-1">${user.username}</h1>
-      <p>${user.genre1}</p>
-      <p>${user.genre2}</p>
-      <p>${user.genre3}</p>
-      <button class="button is-medium" style = "primary" data-id="${user.id}" id="renderquiz" type="quizbutton">Take Quiz</button>
+    return` return`<div id="userprofile">
+    <div class="columns">
+      <div class="column is-four-fifths">  
+        <h1 class="title is-1">Welcome ${user.username}!</h1>
+      </div>
+      <div class="column">
+        <button class="button is-medium" style="primary" data-id="${user.id}" id="signout" type="">Sign Out</button>
+      </div>
+    </div>
+    <section class="section">
+    <div class="container">
+    <h1 class="title is-1 has-text-white">Your Music Profile</h1>
+    <div class="columns">
+      <div class="column">  
+        <div class="content">
+          <h1 class="title">Top Artists</h1>
+          <div class="subtitle">
+            <ol type="1">
+              <li class="">${user.artist1}</li>
+              <li class="">${user.artist2}</li>
+              <li class="">${user.artist3}</li>
+            </ol>
+          </div>
+        </div>
+        <div class="content">
+          <h1 class="title">Top Genres</h1>
+          <div class="subtitle">
+            <ol type="1">
+              <li class="">${user.genre1}</li>
+              <li class="">${user.genre2}</li>
+              <li class="">${user.genre2}</li>
+            </ol>
+          </div>
+        </div>
+        <div class="content">
+          <h1 class="title">Rainy Day Genre</h1>
+          <div class="subtitle">
+            <ol type="1">
+              <li class="">${user.raingenre}</li>
+            </ol>
+          </div>
+        </div>
+        <div class="content">
+          <h1 class="title">Top Go-To Workout Songs</h1>
+          <div class="subtitle">
+            <ol type="1">
+              <li class="">${user.workout1}</li>
+              <li class="">${user.workout2}</li>
+              <li class="">${user.workout3}</li>
+            </ol>
+          </div>
+        </div>
+        <div class="content">
+          <h1 class="title">Saboi Artist of Choice</h1>
+          <div class="subtitle">
+            <ol type="1">
+              <li class="">${user.sadboi}</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+          <h1 class="title">First Song You Play When You Get the Aux</h1>
+          <div class="subtitle">
+            <ol type="1">
+             <li class="">${user.firstsong}</li>
+            </ol>
+          </div>
+        </div>
+        <div class="content">
+          <h1 class="title">Song You Play When Your Mom is in the Room</h1>
+          <div class="subtitle">
+            <ol type="1">
+              <li class="">${user.momsong}</li>
+            </ol>
+          </div>
+        </div>
+        <div class="content">
+          <h1 class="title">Underrated Album</h1>
+          <div class="subtitle">
+            <ol type="1">
+              <li class="">${user.underalbum}</li>
+            </ol>
+          </div>
+        </div>
+        <div class="content">
+          <h1 class="title">Guilty Pleasure Genre</h1>
+          <div class="subtitle">
+            <ol type="1">
+              <li class="">${user.guiltygenre}</li>
+            </ol>
+          </div>
+        </div>
+        <div class="content">
+          <h1 class="title">Artisit Whose Concert You Wanted to Attend</h1>
+          <div class="subtitle">
+            <ol type="1">
+              <li class="">${user.concertartist}</li>
+            </ol>
+          </div>
+        </div>
+        <div class="content">
+          <h1 class="title">Least Favorite Genre</h1>
+          <div class="subtitle">
+            <ol type="1">
+              <li class="">${user.leastfav}</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+      </section>
+      <section class="section">
+      <div class="container">
+      <h1 class="title is-2 has-text-white">Your Music Profile</h1>
+        <div class="content">
+          <button class="button is-medium" style="primary" data-id="${user.id}" id="renderquiz" type="submit">Take Quiz</button>
+        </div>
+        <div class="content">
+          <h2 class="title is-2">your quizzes</h2>
+        </div>
+      </div>
+      </section>
     </div>`
 }
 export const handleloginsubmit = async function(event){
