@@ -421,24 +421,30 @@ export const renderuserprofile = function(user){
 export const handleloginsubmit = async function(event){
   event.preventDefault();
   const $homepage = $(event.target).closest('#homepage');
-  let infoarray = $homepage.serializeArray();
-  let username = infoarray[0];
-  let password = infoarray[1];
-  async function Login(){
-    const result = await axios({
-        name: infoarray[0].value,
-        pass: infoarray[1].value,
+  const $login = $(event.target).closest('#loginform');
+  let infoarray = $login.serializeArray();
+  //console.log(infoarray)
+  let username = infoarray[0].value;
+  //console.log(username)
+  let password = infoarray[1].value;
+  //console.log(password)
+  let r = axios.post('http://localhost:3000/account/login',
+    {
+      name: username,
+      pass: password
     });
-  }
-  let loginresponse = await Login();
-  let profiletorender = loginresponse.data;
-  //instead of for loop below, post request to login
-  // for(let i = 0; i<userData.length; i++){
-  //   if(username == userData[i].username){
-  //     renderuserprofile(userData[i])
-  //   }
-  // }
-  $homepage.replaceWith(renderuserprofile(profiletorender));
+  r.then(response => {
+    console.log(response.data);
+    window.jwt = response.data.jwt;
+    let usertorender = response.data.data;
+    //console.log(usertorender)
+    //console.log(renderuserprofile(usertorender))
+    //console.log($homepage)
+    console.log($homepage)
+    $homepage.replaceWith(renderuserprofile(usertorender));
+  }).catch(error => {
+    console.log(error);
+  });
 }
 export const handlesignout = async function(event){
   const $userprofile = $(event.target).closest('#homepage');
@@ -459,7 +465,7 @@ export const handletakequiz = async function(event){
 }
 
 export const handlesignupsubmit = async function(event){
-  event.preventDefault();
+    event.preventDefault();
   //getInfo();
     const $homepage = $(event.target).closest('#homepage');
     //console.log($homepage);
@@ -485,27 +491,54 @@ export const handlesignupsubmit = async function(event){
     person.guiltygenre = infoarray[17].value;
     person.concertartist = infoarray[18].value;
     person.leastfav = infoarray[19].value;
-    async function CreateAccount(){
-      const result = await axios({
-          name: infoarray[0].value,
-          pass: infoarray[1].value,
-          data: person,
-      });
-    }
-    async function Login(){
-      const result = await axios({
-          name: infoarray[0].value,
-          pass: infoarray[1].value,
-      });
-    }
-    await CreateAccount();
-    await Login();
-    //console.log(infoarray);
-    //post request with person object info
-    // let usertorender = userData.find(user=>user.id===personid);
+
+  let r = axios.post('http://localhost:3000/account/create',
+    {
+      name: person.username,
+      pass: person.password,
+      data: person
+    });
+
+  await r.then(response => {
+    console.log(response.data);
+  }).catch(error => {
+    console.log(error);
+  });
+
+  let p = axios.post('http://localhost:3000/account/login',
+  {
+    name: person.username,
+    pass: person.password
+  });
+  await p.then(response => {
+    console.log(response.data);
+    window.jwt = response.data.jwt;
+  }).catch(error => {
+    console.log(error);
+  });
+  console.log(window.jwt)
+  let bearer = "Bearer "+window.jwt;
+  console.log(bearer)
+  let j = axios.post('http://localhost:3000/user/'+person.username,
+  {
+    data: person
+  }, {headers: { Authorization: "Bearer " + window.jwt }},);
+  await j.then(response => {
+    console.log(response.data);
+    window.jwt = response.data.jwt;
+  }).catch(error => {
+    console.log(error);
+  });
+  // let h = axios.get('http://localhost:3000/user/'+person.username+'/',
+  //   {headers: { Authorization: "Bearer " + window.jwt }},);
+  // await h.then(response => {
+  //   console.log(response.data);
+  // }).catch(error => {
+  //   console.log(error);
+  // });
     let userprofile = renderuserprofile(person);
+    
     $homepage.replaceWith(userprofile);
-  //replaceWith(renderUserProfile(userData[whichever user it was]))
 }
 //on click submit button for login or signup - generate user profile - render html as jquery object, replace index with user profile object
 function main(){
