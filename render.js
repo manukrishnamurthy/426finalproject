@@ -71,7 +71,7 @@ export const renderhomepage=function(){
     <form id="homepage">
 
    <h1 class="title has-text-white">Genre Search</h1>
-    <form>
+    
       <div class="columns">
         <div class="column is-11">
           <input class="input" type="search" id="txt-search" placeholder="Hip-hop">
@@ -86,7 +86,7 @@ export const renderhomepage=function(){
           <label class="label" id="output"></label>
           <label class="label" id="matches"></label>
       </div>
-    </form>
+    
 
     <div class="columns">
             <div class="column">
