@@ -216,6 +216,61 @@ export const renderquizpage = function(questions){
   <h1 class = "title">Twitter Quiz</h1>
   </div>`
 }
+
+export const renderquizpop = function(){
+  return`<div id="quizpop">
+  <section class="section">
+    <div class="container">
+    <h1 class="title is-1 has-text-white">Pop Music Quiz</h1>  
+        <div class="content">
+          <div class="subtitle">
+          <form>
+            <ol type="1">
+              <li class="">Which artist recently had a song featured on a Spiderman movie?</li>
+                <div class="control">
+                  <label class="radio">
+                    <input type="radio" name="answer">
+                    Post Malone
+                  </label>
+                  <label class="radio">
+                    <input type="radio" name="answer">
+                    Khalid
+                  </label>
+                </div>
+              <li class="">In his album No. 6 Collaborations Project, who did Ed Sheeran not partner with?</li>
+              <div class="control">
+                <label class="radio">
+                  <input type="radio" name="answer">
+                  Camila Cabello
+                </label>
+                <label class="radio">
+                  <input type="radio" name="answer">
+                  Ella Mai
+                </label>
+                <label class="radio">
+                  <input type="radio" name="answer">
+                  Ariana Grande                
+                  </label>
+              </div>  
+              <li class="">What album did Khalid release in 2019?</li>
+                <div class="select">
+                  <select>
+                    <option>Select</option>
+                    <option>Free Spirit</option>
+                    <option>American Teen</option>
+                    <option>Suncity</option>
+                  </select>
+              </div>
+            </ol>
+          </div>
+          <button class="button is-medium" style="primary" data-id="" id="submitquiz" type="">Submit</button>
+          </form>
+        </div>
+    </div>
+  </section>
+  </div>`
+}
+
 export const renderuserprofile = function(user){
     //use user information from data.js or person object to construct user rpofile
     return` return`<div id="userprofile">
