@@ -273,7 +273,7 @@ export const renderquizpop = function(){
 
 export const renderuserprofile = function(user){
     //use user information from data.js or person object to construct user rpofile
-    return` return`<div id="userprofile">
+    return`<div id="userprofile">
     <div class="columns">
       <div class="column is-four-fifths">  
         <h1 class="title is-1">Welcome ${user.username}!</h1>
@@ -486,7 +486,6 @@ export const handlesignupsubmit = async function(event){
     //post request with person object info
     // let usertorender = userData.find(user=>user.id===personid);
     let userprofile = renderuserprofile(person);
-    
     $homepage.replaceWith(userprofile);
   //replaceWith(renderUserProfile(userData[whichever user it was]))
 }
@@ -499,7 +498,7 @@ function main(){
     $root.on("click", "#signupsubmit", handlesignupsubmit);
     $root.on("click", "#signout", handlesignout);
     $root.on("click", "#renderquiz", handlerenderquiz);
-        $root.on("click", "#renderquiz", handletakequiz);
+    $root.on("click", "#renderquiz", handletakequiz);
 
     //renders
 }
