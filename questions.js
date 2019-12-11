@@ -300,3 +300,154 @@ const indieQuestions =[
         correctAnswer: "b"
     },
 ]    
+const hipHopQuestions =[
+    {question: "What was the name of Kanye West's 2019 gospel album",
+        answers:{
+            a: "Yeezus",
+            b: "The Life of Pablo",
+            c: "ye",
+            d:"Jesus is King"
+        },
+        correctAnswer: "d"
+
+    },
+    {question: "Which Artist Released 'Look Back at it'",
+        answers:{
+            a: "A Boogie Wit da Hoodie",
+            b: "Quavo",
+            c: "Offset",
+            d:"Cardi B"
+        },
+        correctAnswer: "a"
+    },
+    {question: "What movie featured the song 'Power' by Kanye West>",
+        answers:{
+            a: "Avatar: The Last Airbender (jk this wasn't an acutual movie)",
+            b: "The Bling Ring",
+            c: "Fast and Furious 7",
+            d: "Straight Outta Compton"
+        },
+        correctAnswer: "b"
+    },
+    {question: "Finish the lyric: 'Yeeeeeeeeeeeeeeeeeee I'm gon' take my horse to the _____' (Old Town Road: Lil Nas X) ",
+        answers:{
+            a: "old town road",
+            b: "farm where I take great care of her",
+            c: "vet to see if there are any lingering problems",
+            d: "horse race; she's the fastest horse alive!"
+        },
+        correctAnswer: "a"
+    },
+    {question: "Which artist was featured alongside Post Malone in Psycho?",
+        answers:{
+            a: "Timbaland",
+            b: "Justin Beiber",
+            c: "Ed Sheeren",
+            d: "Ty Dolla $ign"
+        },
+        correctAnswer: "d"
+    },
+    {question: "Who is the most listened to female hip-hop artist of 2019?",
+        answers:{
+            a: "Lizzo",
+            b: "Nicki Minaj",
+            c: "Cardi B",
+            d: "Riskay"
+        },
+        correctAnswer: "c"
+    },
+    {question: "What is the name of Drake's oldest album?",
+        answers:{
+            a: "Disarming Violence",
+            b: "Nothing Was The Same",
+            c: "Views",
+            d: "Best I Ever Had"
+        },
+        correctAnswer: "a"
+    },
+    {question: "Who is the most listened to Hip-Hop Song of the Week?",
+        answers:{
+            a: "Good as Hell: Lizzo",
+            b: "Circles: Post Malone",
+            c: "Heartless: The Weeknd",
+            d: "Dance Monkey: Tones and I"
+        },
+        correctAnswer: "c"
+    },
+]    
+
+const rapQuestions =[
+    {question: "What was the name of Chance the Rapper's 2019 album",
+        answers:{
+            a: "The Big Day",
+            b: "Coloring Book",
+            c: "Acid Rap",
+            d: "10 Day"
+        },
+        correctAnswer: "a"
+
+    },
+    {question: "Which Artist Released 'Talk It Walk It'",
+        answers:{
+            a: "Quavo",
+            b: "Offset",
+            c: "Takeoff",
+            d: "All of the above"
+        },
+        correctAnswer: "d"
+    },
+    {question: "What was Dr. Dre's most streamed song?",
+        answers:{
+            a: "Still DRE",
+            b: "The Next Episode",
+            c: "Forget About Dre",
+            d: "I need a Doctor"
+        },
+        correctAnswer: "a"
+    },
+    {question: "Finish the lyric: 'Yeeeeeeeeeeeeeeeeeee I'm gon' take my horse to the _____' (Old Town Road: Lil Nas X) ",
+        answers:{
+            a: "old town road",
+            b: "farm where I take great care of her",
+            c: "vet to see if there are any lingering problems",
+            d: "horse race; she's the fastest horse alive!"
+        },
+        correctAnswer: "a"
+    },
+    {question: "What is considered the greatest crossover of artists in Rap History?",
+        answers:{
+            a: "Lil Nas X: Old Town Road feat. Billy Ray Cyrus",
+            b: "Ed Sheeran: Riverside feat. Eminem",
+            c: "Forever feat. Drake, Kanye West, Lil Wayne, Eminem",
+            d: "Childish Gambino: Childish Gambino"
+        },
+        correctAnswer: "c"
+    },
+    {question: "Who is featured in the background of Nice For What: Drake?",
+        answers:{
+            a: "Missy Elliot",
+            b: "Queen Latifah",
+            c: "Lizzo",
+            d: "Riskay"
+        },
+        correctAnswer: "a"
+    },
+    {question: "What is the name of Kendrick Lamar's first Mixtape?",
+        answers:{
+            a: "Y.H.N.I.C",
+            b: "Section 80",
+            c: "DAMN",
+            d: "To Pimp A Butterfly"
+        },
+        correctAnswer: "a"
+    },
+    {question: "Who did Logic feature in his albums?",
+        answers:{
+            a: "J. Cole",
+            b: "Kendrick Lamar",
+            c: "Cardi B",
+            d: "Neil Degrasse Tyson"
+        },
+        correctAnswer: "d"
+    },
+] 
