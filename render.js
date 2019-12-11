@@ -690,16 +690,60 @@ async function main(){
     window.$root = $('#root');
     let homepage = renderhomepage();
     $root.append(homepage)
-    // let j = axios.post('http://localhost:3000/public/questions',
-    // {
-    //   data: popQuestions
-    // });
-    // await j.then(response => {
-    //   console.log(response.data);
-    //   window.jwt = response.data.jwt;
-    // }).catch(error => {
-    //   console.log(error);
-    // });
+    let j = axios.post('http://localhost:3000/public/pop',
+    {
+      data: popQuestions
+    });
+    await j.then(response => {
+      console.log(response.data);
+    }).catch(error => {
+      console.log(error);
+    });
+    let r = axios.post('http://localhost:3000/public/rocknroll',
+    {
+      data: rockquestions
+    });
+    await r.then(response => {
+      console.log(response.data);
+    }).catch(error => {
+      console.log(error);
+    });
+    let k = axios.post('http://localhost:3000/public/country',
+    {
+      data: countryquestions
+    });
+    await k.then(response => {
+      console.log(response.data);
+    }).catch(error => {
+      console.log(error);
+    });
+    let l = axios.post('http://localhost:3000/public/indie',
+    {
+      data: indieQuestions
+    });
+    await l.then(response => {
+      console.log(response.data);
+    }).catch(error => {
+      console.log(error);
+    });
+    let m = axios.post('http://localhost:3000/public/rap',
+    {
+      data: rapQuestions
+    });
+    await m.then(response => {
+      console.log(response.data);
+    }).catch(error => {
+      console.log(error);
+    });
+    let v = axios.post('http://localhost:3000/public/hiphop',
+    {
+      data: hipHopQuestions
+    });
+    await v.then(response => {
+      console.log(response.data);
+    }).catch(error => {
+      console.log(error);
+    });
     $root.on("click", "#loginsubmit", handleloginsubmit);
     $root.on("click", "#signupsubmit", handlesignupsubmit);
     $root.on("click", "#signout", handlesignout);
