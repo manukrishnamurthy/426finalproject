@@ -69,6 +69,18 @@ export const renderhomepage=function(){
     return `
     <section class="section has-background-primary" >
     <form id="homepage">
+
+    <h1 class="title has-text-white">Genre Search</h1>
+    <form>
+      <input class="input" type="search" id="txt-search" placeholder="Hip-hop">
+      <div class="field">
+        <div class="control">
+            <input class="button is-dark" id = "genresubmit" type="submit" />
+        </div>
+      </div>
+      <label class="label" id="output"></label>
+      <label class="label" id="matches"></label>
+    </form>
     <div class="columns">
             <div class="column">
                 <h1 class="title has-text-white">Signup</h1>
@@ -176,7 +188,6 @@ export const renderhomepage=function(){
                         </div>
                         <br>
                     </div>
-
                     <div class="field">
                         <div class="control">
                             <input class="button is-dark" id = "signupsubmit" type="submit" />
