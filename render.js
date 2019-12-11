@@ -70,7 +70,6 @@ export const renderhomepage=function(){
     <section class="section has-background-primary" >
     <form id="homepage">
       <h1 class="title has-text-white">Genre Search</h1>
-
         <div class="columns">
           <div id="genresearchhomepage" class="column is-11">
             <input class="input" type="search" id="txt-search" placeholder="Hip-hop">
@@ -81,11 +80,10 @@ export const renderhomepage=function(){
                   <input class="button is-dark" id = "genresubmit" type="submit" />
               </div>
             </div>
+            </div>
           </div>
-            <label class="label" id="output"></label>
             <label class="label" id="matches"></label>
         </div>
-
     <div class="columns">
             <div class="column">
                 <h1 class="title has-text-white">Signup</h1>
@@ -193,7 +191,6 @@ export const renderhomepage=function(){
                         </div>
                         <br>
                     </div>
-
                     <div class="field">
                         <div class="control">
                             <input class="button is-dark" id = "signupsubmit" type="submit" />
@@ -450,6 +447,19 @@ export const handlesignout = async function(event){
   $userprofile.replaceWith(renderhomepage);
 }
 
+export const handleSearchQuiz = async function(event){
+  // ID is "matches" to move to the sample quiz page
+  event.preventDefault();
+  let title = document.getElementById("matches").textContent;
+  console.log(title);
+
+  let h = axios.get('http://localhost:3000/public/'+title,
+  );
+  await h.then(response => {
+    console.log(response.data);
+  })
+}
+
 export const handlerenderquiz = async function(event){
   const $genresearch = $(event.target).closest('#txt-search');
   // let infoarray = $genresearch.serializeArray();
@@ -620,7 +630,6 @@ export const renderupdateform = function(user){
       </div>
       <br>
   </div>
-
   <div class="field">
       <div class="control">
           <input class="button is-dark" id = "updatesubmit" type="submit" />
@@ -695,7 +704,7 @@ async function main(){
     $root.on("click", "#signupsubmit", handlesignupsubmit);
     $root.on("click", "#signout", handlesignout);
     $root.on("click", "#renderquiz", handlerenderquiz);
-    $root.on("click", "#genresubmit", handlerenderquiz);
+    $root.on("click", "#genresubmit", handleSearchQuiz);
     $root.on("click", "#updateprofile", handleupdateprofile);
     $root.on("click", "#updatesubmit", handleupdatesubmit);
 }
