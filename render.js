@@ -70,17 +70,24 @@ export const renderhomepage=function(){
     <section class="section has-background-primary" >
     <form id="homepage">
 
-    <h1 class="title has-text-white">Genre Search</h1>
+   <h1 class="title has-text-white">Genre Search</h1>
     <form>
-      <input class="input" type="search" id="txt-search" placeholder="Hip-hop">
-      <div class="field">
-        <div class="control">
-            <input class="button is-dark" id = "genresubmit" type="submit" />
+      <div class="columns">
+        <div class="column is-11">
+          <input class="input" type="search" id="txt-search" placeholder="Hip-hop">
         </div>
+        <div class="column is-1">
+          <div class="field">
+            <div class="control">
+                <input class="button is-dark" id = "genresubmit" type="submit" />
+            </div>
+          </div>
+        </div>
+          <label class="label" id="output"></label>
+          <label class="label" id="matches"></label>
       </div>
-      <label class="label" id="output"></label>
-      <label class="label" id="matches"></label>
     </form>
+
     <div class="columns">
             <div class="column">
                 <h1 class="title has-text-white">Signup</h1>
