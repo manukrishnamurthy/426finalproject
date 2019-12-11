@@ -447,19 +447,6 @@ export const handlesignout = async function(event){
   $userprofile.replaceWith(renderhomepage);
 }
 
-export const handleSearchQuiz = async function(event){
-  // ID is "matches" to move to the sample quiz page
-  event.preventDefault();
-  let title = document.getElementById("matches").textContent;
-  console.log(title);
-
-  let h = axios.get('http://localhost:3000/public/'+title,
-  );
-  await h.then(response => {
-    console.log(response.data);
-  })
-}
-
 export const handlerenderquiz = async function(event){
   const $genresearch = $(event.target).closest('#txt-search');
   // let infoarray = $genresearch.serializeArray();
@@ -550,6 +537,67 @@ export const handleupdateprofile = async function(event){
     console.log(error);
   });
 }
+
+export const handleSearchQuiz = async function(event){
+  // ID is "matches" to move to the sample quiz page
+  let $homepage = $(event.target).closest("#homepage")
+  event.preventDefault();
+  let title = document.getElementById("matches").textContent;
+  console.log(title);
+
+  let h = axios.get('http://localhost:3000/public/'+title,
+  );
+  await h.then(response => {
+    console.log(response.data);
+    let quizarray = response.data.result;
+    let samplequizpage = renderSampleQuiz(quizarray);
+    $homepage.replaceWith(samplequizpage);
+
+  }).catch(error => {
+    console.log(error);
+  });
+}
+
+export const renderSampleQuiz = function(quiz){
+  return `
+  <h3>Sample Quiz I</h3>
+  <form id = 'sample_quiz' enctype="text/plain">
+  
+  This quiz is only a sample quiz. Since you are not logged in, you will not be able to submit these answers.
+  
+  <P>${quiz[0].question}<BR>
+  <input type="radio">${quiz[0].answers.a}<BR>
+  <input type="radio">${quiz[0].answers.b}<BR>
+  <input type="radio">${quiz[0].answers.c}<BR>
+  <input type="radio">${quiz[0].answers.d}<BR>
+  </p>
+  
+  <P>${quiz[1].question}<BR>
+  <input type="radio">${quiz[1].answers.a}<BR>
+  <input type="radio">${quiz[1].answers.b}<BR>
+  <input type="radio">${quiz[1].answers.c}<BR>
+  <input type="radio">${quiz[1].answers.d}<BR>
+  </p>
+  
+  <P>${quiz[2].question}<BR>
+  <input type="radio" name="1.The word which means house is">${quiz[2].answers.a}<BR>
+  <input type="radio" name="1.The word which means house is">${quiz[2].answers.b}<BR>
+  <input type="radio" name="1.The word which means house is">${quiz[2].answers.c}<BR>
+  <input type="radio" name="1.The word which means house is">${quiz[2].answers.d}<BR>
+  </p>
+  
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="control">
+  <input class="button is-dark" id = "sample_submit" type = "submit" value="Return to Homepage">
+  </div>
+  </form>
+  `
+}
+
+
 export const renderupdateform = function(user){
   return`<form id="updateform" data-id = ${user.username}>
   <div class="field">
@@ -687,69 +735,70 @@ export const handleupdatesubmit= async function(event){
 
 //on click submit button for login or signup - generate user profile - render html as jquery object, replace index with user profile object
 async function main(){
-    window.$root = $('#root');
-    let homepage = renderhomepage();
-    $root.append(homepage)
-    let j = axios.post('http://localhost:3000/public/pop',
-    {
-      data: popQuestions
-    });
-    await j.then(response => {
-      console.log(response.data);
-    }).catch(error => {
-      console.log(error);
-    });
-    let r = axios.post('http://localhost:3000/public/rocknroll',
-    {
-      data: rockquestions
-    });
-    await r.then(response => {
-      console.log(response.data);
-    }).catch(error => {
-      console.log(error);
-    });
-    let k = axios.post('http://localhost:3000/public/country',
-    {
-      data: countryquestions
-    });
-    await k.then(response => {
-      console.log(response.data);
-    }).catch(error => {
-      console.log(error);
-    });
-    let l = axios.post('http://localhost:3000/public/indie',
-    {
-      data: indieQuestions
-    });
-    await l.then(response => {
-      console.log(response.data);
-    }).catch(error => {
-      console.log(error);
-    });
-    let m = axios.post('http://localhost:3000/public/rap',
-    {
-      data: rapQuestions
-    });
-    await m.then(response => {
-      console.log(response.data);
-    }).catch(error => {
-      console.log(error);
-    });
-    let v = axios.post('http://localhost:3000/public/hiphop',
-    {
-      data: hipHopQuestions
-    });
-    await v.then(response => {
-      console.log(response.data);
-    }).catch(error => {
-      console.log(error);
-    });
-    $root.on("click", "#loginsubmit", handleloginsubmit);
-    $root.on("click", "#signupsubmit", handlesignupsubmit);
-    $root.on("click", "#signout", handlesignout);
-    $root.on("click", "#renderquiz", handlerenderquiz);
-    $root.on("click", "#genresubmit", handleSearchQuiz);
-    $root.on("click", "#updateprofile", handleupdateprofile);
-    $root.on("click", "#updatesubmit", handleupdatesubmit);
+  window.$root = $('#root');
+  let homepage = renderhomepage();
+  $root.append(homepage)
+  let j = axios.post('http://localhost:3000/public/pop',
+  {
+    data: popQuestions
+  });
+  await j.then(response => {
+    console.log(response.data);
+  }).catch(error => {
+    console.log(error);
+  });
+  let r = axios.post('http://localhost:3000/public/rocknroll',
+  {
+    data: rockquestions
+  });
+  await r.then(response => {
+    console.log(response.data);
+  }).catch(error => {
+    console.log(error);
+  });
+  let k = axios.post('http://localhost:3000/public/country',
+  {
+    data: countryquestions
+  });
+  await k.then(response => {
+    console.log(response.data);
+  }).catch(error => {
+    console.log(error);
+  });
+  let l = axios.post('http://localhost:3000/public/indie',
+  {
+    data: indieQuestions
+  });
+  await l.then(response => {
+    console.log(response.data);
+  }).catch(error => {
+    console.log(error);
+  });
+  let m = axios.post('http://localhost:3000/public/rap',
+  {
+    data: rapQuestions
+  });
+  await m.then(response => {
+    console.log(response.data);
+  }).catch(error => {
+    console.log(error);
+  });
+  let v = axios.post('http://localhost:3000/public/hiphop',
+  {
+    data: hipHopQuestions
+  });
+  await v.then(response => {
+    console.log(response.data);
+  }).catch(error => {
+    console.log(error);
+  });
+  $root.on("click", "#loginsubmit", handleloginsubmit);
+  $root.on("click", "#signupsubmit", handlesignupsubmit);
+  $root.on("click", "#signout", handlesignout);
+  $root.on("click", "#renderquiz", handlerenderquiz);
+  $root.on("click", "#genresubmit", handleSearchQuiz);
+  $root.on("click", "#updateprofile", handleupdateprofile);
+  $root.on("click", "#updatesubmit", handleupdatesubmit);
+  $root.on("click", "#sample_submit", renderhomepage);
 }
 main();
