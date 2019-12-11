@@ -431,6 +431,15 @@ export const handlerenderquiz = async function(event){
   const $userprofile = $(event.target).closest('#homepage');
   $userprofile.replaceWith(renderhomepage)
 }
+
+export const handletakequiz = async function(event){
+  event.preventDefault();
+  const $user = $(event.target).closest('#userprofile');
+ // let person = userprofile.person;
+  let quizpop = renderquizpop(); 
+  $user.replaceWith(quizpop);
+}
+
 export const handlesignupsubmit = async function(event){
   event.preventDefault();
   //getInfo();
@@ -490,6 +499,8 @@ function main(){
     $root.on("click", "#signupsubmit", handlesignupsubmit);
     $root.on("click", "#signout", handlesignout);
     $root.on("click", "#renderquiz", handlerenderquiz);
+        $root.on("click", "#renderquiz", handletakequiz);
+
     //renders
 }
 main();
