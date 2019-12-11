@@ -223,3 +223,80 @@ const countryquestions = [
     correctAnswer: "a"
 },
 ]
+
+
+const indieQuestions =[
+    {question: "Who is the lead singer of the Artic Monkeys",
+        answers:{
+            a: "Alex Turner",
+            b: "Nick O'Malley",
+            c: "Andy Nicholson",
+            d:"Brendan Urie"
+        },
+        correctAnswer: "a"
+
+    },
+    {question: "Which Artist Released 'Texas Sun'",
+        answers:{
+            a: "The Strokes",
+            b: "Lord Huron",
+            c: "Leon Bridges",
+            d:"Lake Street Drive"
+        },
+        correctAnswer: "c"
+    },
+    {question: "What movie featured the song 'Supercut' by Lorde>",
+        answers:{
+            a: "Someone Great",
+            b: "Pets 2",
+            c: "Ad Astra",
+            d: "The Farewell"
+        },
+        correctAnswer: "a"
+    },
+    {question: "Finish the lyric: 'And when my fear pulls me out to sea, And the stars are hidden by ______' (Sucker: The Jonas Brothers) ",
+        answers:{
+            a: "my ice and my antifreeze",
+            b: "my pride and my enemies",
+            c: "my mind and my legacies",
+            d: "my life and my necessities"
+        },
+        correctAnswer: "b"
+    },
+    {question: "Which artist released 'Father of the Bride' in 2019?",
+        answers:{
+            a: "Vampire Weekend",
+            b: "Tame Impala",
+            c: "Mumford & Sons",
+            d: "Bastille"
+        },
+        correctAnswer: "a"
+    },
+    {question: "What was the name of Jade-Bird's album released in 2019?",
+        answers:{
+            a: "Furious",
+            b: "Jade-Bird",
+            c: "My Motto",
+            d: "Bird-Jade"
+        },
+        correctAnswer: "b"
+    },
+    {question: "Which song was released in 2019 by Pheobe Bridgers?",
+        answers:{
+            a: "Forest Lawn",
+            b: "Smoke Signals",
+            c: "Stay Down",
+            d: "You Missed My Heart"
+        },
+        correctAnswer: "a"
+    },
+    {question: "Who was considered one of 2019's Breakout Indie Artists?",
+        answers:{
+            a: "Eagles",
+            b: "Jade-Bird",
+            c: "Charlie XCX",
+            d: "Tame Impala"
+        },
+        correctAnswer: "b"
+    },
+]    
