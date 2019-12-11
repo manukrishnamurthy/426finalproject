@@ -405,9 +405,9 @@ export const renderuserprofile = function(user){
           </section>
           <section class="section">
           <div class="container">
-          <h1 class="title is-2 has-text-white">Your Music Profile</h1>
             <div class="content">
               <button class="button is-medium" style="primary" data-id="${user.id}" id="renderquiz" type="submit">Take Quiz</button>
+              <button class="button is-medium is-dark" style="primary" data-id="${user.id}" id="updateprofile">Update Profile</button>
             </div>
             <div class="content">
               <h2 class="title is-2">your quizzes</h2>
@@ -432,25 +432,22 @@ export const handleloginsubmit = async function(event){
       pass: password
     });
   r.then(response => {
-    console.log(response.data);
+    //console.log(response.data);
     window.jwt = response.data.jwt;
     let usertorender = response.data.data;
     //console.log(usertorender)
     //console.log(renderuserprofile(usertorender))
     //console.log($homepage)
-    console.log($homepage)
+    //console.log($homepage)
     $homepage.replaceWith(renderuserprofile(usertorender));
   }).catch(error => {
     console.log(error);
   });
 }
 export const handlesignout = async function(event){
-  const $userprofile = $(event.target).closest('#homepage');
+  const $userprofile = $(event.target).closest('#userprofile');
   //axios request to backend to sign out
   $userprofile.replaceWith(renderhomepage);
-}
-export const handlechangepassword = async function(event){
-
 }
 
 export const handlerenderquiz = async function(event){
@@ -467,7 +464,7 @@ export const handlesignupsubmit = async function(event){
     let infoarray = $homepage.serializeArray();
     let person = {};
      person.username = infoarray[0].value;
-    // person.email = infoarray[1].value;
+     person.email = infoarray[1].value;
     person.password = infoarray[2].value;
     person.artist1 = infoarray[3].value;
     person.artist2 = infoarray[4].value;
@@ -496,45 +493,189 @@ export const handlesignupsubmit = async function(event){
 
   await r.then(response => {
     console.log(response.data);
+    let p = axios.post('http://localhost:3000/account/login',
+    {
+      name: person.username,
+      pass: person.password
+    });
+    p.then(response => {
+      console.log(response.data);
+      window.jwt = response.data.jwt;
+    }).catch(error => {
+      console.log(error);
+    });
+    console.log(window.jwt)
+    let bearer = "Bearer "+window.jwt;
+    console.log(bearer)
+    let j = axios.post('http://localhost:3000/user/'+person.username,
+    {
+      data: person
+    }, {headers: { Authorization: "Bearer " + window.jwt }},);
+    j.then(response => {
+      console.log(response.data);
+      window.jwt = response.data.jwt;
+    }).catch(error => {
+      console.log(error);
+    });
+      let userprofile = renderuserprofile(person);
+      
+      $homepage.replaceWith(userprofile);
   }).catch(error => {
     console.log(error);
+    alert("That account already exists, please log in")
   });
 
-  let p = axios.post('http://localhost:3000/account/login',
-  {
-    name: person.username,
-    pass: person.password
-  });
-  await p.then(response => {
-    console.log(response.data);
-    window.jwt = response.data.jwt;
-  }).catch(error => {
-    console.log(error);
-  });
-  console.log(window.jwt)
-  let bearer = "Bearer "+window.jwt;
-  console.log(bearer)
-  let j = axios.post('http://localhost:3000/user/'+person.username,
-  {
-    data: person
-  }, {headers: { Authorization: "Bearer " + window.jwt }},);
-  await j.then(response => {
-    console.log(response.data);
-    window.jwt = response.data.jwt;
-  }).catch(error => {
-    console.log(error);
-  });
+
+}
+export const handleupdateprofile = async function(event){
+  console.log(jwt)
   let h = axios.get('http://localhost:3000/account/status',
     {headers: { Authorization: "Bearer " + window.jwt }},);
   await h.then(response => {
+    console.log(response.data.user.data);
+    let updateform = renderupdateform(response.data.user.data);
+    let $userprofile = $(event.target).closest('#userprofile');
+    $userprofile.replaceWith(updateform);
+  }).catch(error => {
+    console.log(error);
+  });
+}
+export const renderupdateform = function(user){
+  return`<form id="updateform" data-id = ${user.username}>
+  <div class="field">
+      <label class="title has-text-white">Music Preference Survey</label>
+      <br>
+      <br>
+      <p class="is-size-4 has-text-white">Top 3 artists</p>
+      <div class="control">
+        <input class="input" type="text" id = "artist1" placeholder=${user.artist1} name="Artist1">
+      </div>
+      <div class="control">
+        <input class="input" type="text" id = "artist2" placeholder=${user.artist2} name="Artist2">
+      </div>
+      <div class="control">
+        <input class="input" type="text" id = "artist3" placeholder=${user.artist3} name="Artist3">
+      </div>
+      <br>
+      <p class="is-size-4 has-text-white">Top 3 genres</p>
+      <div class="control">
+        <input class="input" type="text" id = "genre1" placeholder=${user.genre1} name="Genre1">
+      </div>
+      <div class="control">
+        <input class="input" type="text" id = "genre2" placeholder=${user.genre2} name="Genre2">
+      </div>
+      <div class="control">
+        <input class="input" type="text" id = "genre3" placeholder=${user.genre3} name="Genre3">
+      </div>
+      <br>
+      <p class="is-size-4 has-text-white">Rainy Day Genre</p>
+      <div class="control">
+        <input class="input" type="text" id = "RainGenre" placeholder=${user.raingenre} name="RainGenre">
+      </div>
+      <br>
+      <p class="is-size-4 has-text-white">Top 3 Go-To Workout Songs</p>
+      <div class="control">
+        <input class="input" type="text" id = "workout1" placeholder="Hallelujah" name="workout1">
+      </div>
+      <div class="control">
+        <input class="input" type="text" id = "workout2" placeholder="22" name="workout2">
+      </div>
+      <div class="control">
+        <input class="input" type="text" id = "workout3" placeholder="Row Your Boat" name="workout3">
+      </div>
+      <br>
+      <p class="is-size-4 has-text-white">Sadboi Artist of Choice</p>
+      <div class="control">
+        <input class="input" type="text" id = "sadboi" placeholder="Adele" name="Sadboi">
+      </div>
+      <br>
+      <p class="is-size-4 has-text-white">First Song You Play When You Get the Aux</p>
+      <div class="control">
+        <input class="input" type="text" id = "firstsong" placeholder="All Night" name="firstsong">
+      </div>
+      <br>
+      <p class="is-size-4 has-text-white">Song You Play When Your Mom is in the Room</p>
+      <div class="control">
+        <input class="input" type="text" id = "momsong" placeholder="Feliz Navidad" name="momsong">
+      </div>
+      <br>
+      <p class="is-size-4 has-text-white">Underrated Album</p>
+      <div class="control">
+        <input class="input" type="text" id = "underalbum" placeholder="Damn" name="underalbum">
+      </div>
+      <br>
+      <p class="is-size-4 has-text-white">Guilty Pleasure Genre</p>
+      <div class="control">
+        <input class="input" type="text" id = "guiltygenre" placeholder="Bubblegum Pop" name="guiltygenre">
+      </div>
+      <br>
+      <p class="is-size-4 has-text-white">Artist whose Concert you Most Want to Attend</p>
+      <div class="control">
+        <input class="input" type="text" id = "concertartist" placeholder="Anderson.Paak" name="concertartist">
+      </div>
+      <br>
+      <p class="is-size-4 has-text-white">Least Favorite Genre</p>
+      <div class="control">
+        <input class="input" type="text" id = "leastfav" placeholder="Country" name="leastfav">
+      </div>
+      <br>
+  </div>
+
+  <div class="field">
+      <div class="control">
+          <input class="button is-dark" id = "updatesubmit" type="submit" />
+      </div>
+  </div>
+</form>`
+
+}
+export const handleupdatesubmit= async function(event){
+  event.preventDefault();
+  let $update = $(event.target).closest('#updateform');
+  let infoarray = $update.serializeArray();
+  console.log(infoarray)
+  const username = $update.data('id');
+  let h = axios.get('http://localhost:3000/account/status',
+    {headers: { Authorization: "Bearer " + window.jwt }},);
+  await h.then(response => {
+    console.log(response.data.user.data);
+    window.usertoupdate= response.data.user.data
+    
+  }).catch(error => {
+    console.log(error);
+  });
+  if(infoarray[0].value!="")(usertoupdate.artist1=infoarray[0].value);
+  if(infoarray[1].value!="")(usertoupdate.artist2=infoarray[1].value);
+  if(infoarray[2].value!="")(usertoupdate.artist3=infoarray[2].value);
+  if(infoarray[3].value!="")(usertoupdate.genre1=infoarray[3].value);
+  if(infoarray[4].value!="")(usertoupdate.genre2=infoarray[4].value);
+  if(infoarray[5].value!="")(usertoupdate.genre3=infoarray[5].value);
+  if(infoarray[6].value!="")(usertoupdate.raingenre=infoarray[6].value);
+  if(infoarray[7].value!="")(usertoupdate.workout1=infoarray[7].value);
+  if(infoarray[8].value!="")(usertoupdate.workout2=infoarray[8].value);
+  if(infoarray[9].value!="")(usertoupdate.workout3=infoarray[9].value);
+  if(infoarray[10].value!="")(usertoupdate.sadboi=infoarray[10].value);
+  if(infoarray[11].value!="")(usertoupdate.firstsong=infoarray[11].value);
+  if(infoarray[12].value!="")(usertoupdate.momsong=infoarray[12].value);
+  if(infoarray[13].value!="")(usertoupdate.underalbum=infoarray[13].value);
+  if(infoarray[14].value!="")(usertoupdate.guiltygenre=infoarray[14].value);
+  if(infoarray[15].value!="")(usertoupdate.concertartist=infoarray[15].value);
+  if(infoarray[16].value!="")(usertoupdate.leastfav=infoarray[16].value);
+
+  let b = axios.post('http://localhost:3000/user/'+username,
+  {
+    data: usertoupdate
+  },
+    {headers: { Authorization: "Bearer " + window.jwt }},);
+  await b.then(response => {
     console.log(response.data);
   }).catch(error => {
     console.log(error);
   });
-    let userprofile = renderuserprofile(person);
-    
-    $homepage.replaceWith(userprofile);
+  $update.replaceWith(renderuserprofile(usertoupdate));
+
 }
+
 //on click submit button for login or signup - generate user profile - render html as jquery object, replace index with user profile object
 async function main(){
     window.$root = $('#root');
@@ -555,8 +696,7 @@ async function main(){
     $root.on("click", "#signout", handlesignout);
     $root.on("click", "#renderquiz", handlerenderquiz);
     $root.on("click", "#genresubmit", handlerenderquiz);
-   // $root.on("click", "#renderquiz", handletakequiz);
-    // $root.on("click", "#changepassword", handlechangepassword);
-    // $root.on("click", "#deleteaccount", handledeleteaccount);
+    $root.on("click", "#updateprofile", handleupdateprofile);
+    $root.on("click", "#updatesubmit", handleupdatesubmit);
 }
 main();
