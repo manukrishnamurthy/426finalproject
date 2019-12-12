@@ -1,5 +1,4 @@
 
-let counter = 0;
 export const renderhomepage=function(){
     return `
     <section class="section has-background-primary" >
@@ -345,7 +344,7 @@ export const renderuserprofile = function(user){
             </div>
           </div>
           <br>
-          <div class="select">
+          <div class="select" id="dropdown">
               <select id="selectBox">
                 <option>Choose Genre</option>
                 <option>rap</option>
@@ -390,6 +389,7 @@ export const handleloginsubmit = async function(event){
 export const handlesignout = async function(event){
   const $userprofile = $(event.target).closest('#userprofile');
   //axios request to backend to sign out
+  jwt = "";
   $userprofile.replaceWith(renderhomepage);
 }
 export const handleSearchQuiz = async function(event){
@@ -463,6 +463,7 @@ export const handlesignupsubmit = async function(event){
     const $homepage = $(event.target).closest('#homepage');
     //console.log($homepage);
     let infoarray = $homepage.serializeArray();
+    console.log(infoarray)
     let person = {};
      person.username = infoarray[0].value;
      person.email = infoarray[1].value;
@@ -526,14 +527,13 @@ export const handlesignupsubmit = async function(event){
     alert("That account already exists, please log in")
   });
 
-
 }
 export const handleupdateprofile = async function(event){
   console.log(jwt)
   let h = axios.get('http://localhost:3000/account/status',
     {headers: { Authorization: "Bearer " + window.jwt }},);
   await h.then(response => {
-    console.log(response.data.user.data);
+    console.log(response.data.user.data.username);
     let updateform = renderupdateform(response.data.user.data);
     let $userprofile = $(event.target).closest('#userprofile');
     $userprofile.replaceWith(updateform);
@@ -679,12 +679,13 @@ export const handleupdatesubmit= async function(event){
 export const handlegeneratequiz = async function(event){
   
   let $userprofile = $(event.target).closest("#userprofile");
+  let $selectbox = $(event.target).closest("#dropdown")
   var selectedValue = selectBox.options[selectBox.selectedIndex].value;
   let j = axios.get('http://localhost:3000/public/'+selectedValue,);
     await j.then(response => {
       console.log(response.data);
       let quizpage = renderquiz(response.data.result, selectedValue);
-      $userprofile.append(quizpage);
+      $selectbox.replaceWith(quizpage);
       // if(counter==0){$userprofile.append(quizpage); counter = counter+1;}
       // else{ 
       //   console.log("hello")
@@ -762,7 +763,17 @@ export const renderquiz = function(quizarray, quiztype){
 }
 export const handlecancelquiz = async function(event){
   let $quizform = $(event.target).closest("#quizform");
-  $quizform.replaceWith(``)
+  $quizform.replaceWith(`<div class="select" id="dropdown">
+  <select id="selectBox">
+    <option>Choose Genre</option>
+    <option>rap</option>
+    <option>pop</option>
+    <option>indie</option>
+    <option>rocknroll</option>
+    <option>country</option>
+    <option>hiphop</option>
+  </select>
+</div>`)
 }
 export const handlesubmitquiz = async function(event){
 
@@ -798,10 +809,6 @@ export const handlesubmitquiz = async function(event){
       if(correctanswers[u]==useranswers[u]){
         scorevar = scorevar+1;
       }
-      else{
-        console.log(useranswers[u])
-        console.log(correctanswers[u])
-      }
     }
     let h = axios.get('http://localhost:3000/account/status',
     {headers: { Authorization: "Bearer " + window.jwt }},);
@@ -814,7 +821,7 @@ export const handlesubmitquiz = async function(event){
     Quiz.score = scorevar;
     Quiz.percent = percentage;
     Quiz.genre = quiztype;
-          let v = axios.post('http://localhost:3000/private/scores',
+          let v = axios.post('http://localhost:3000/private/scores/'+userName,
           {
             data: Quiz,
             type: "merge"
@@ -824,18 +831,22 @@ export const handlesubmitquiz = async function(event){
           }).catch(error => {
             console.log(error);
           });
-          let f = axios.get('http://localhost:3000/private/scores',{headers: { Authorization: "Bearer " + window.jwt }});
+          let f = axios.get('http://localhost:3000/private/scores/'+userName,{headers: { Authorization: "Bearer " + window.jwt }});
           f.then(response => {
             //console.log(response.data.result);
-            let scorearray = response.data.result;
-            let userscorearray = [];
-            for(let h = 0; h<scorearray.length; h++){
-              if(scorearray[h].user==userName){
-                userscorearray.push(scorearray[h])
-              }
-            }
-            //console.log(userscorearray);
-            $quizform.replaceWith(renderscorepage(userscorearray))
+            let recentscore = response.data.result[response.data.result.length-1]
+            //console.log(recentscore)
+            let userscorepage = rendermyscore(recentscore);
+            $quizform.replaceWith(userscorepage);
+            //let scorearray = response.data.result;
+            //let userscorearray = [];
+            // for(let h = 0; h<scorearray.length; h++){
+            //   if(scorearray[h].user==userName){
+            //     userscorearray.push(scorearray[h])
+            //   }
+            // }
+            // //console.log(userscorearray);
+            // $quizform.replaceWith(renderscorepage(userscorearray))
           }).catch(error => {
             console.log(error);
           });
@@ -847,36 +858,116 @@ export const handlesubmitquiz = async function(event){
     console.log(error);
   });
 
-
   //get request to private datastore for array of score objects
   //create array of score objects from response with userName = username in score object
   //call renderscorepage function - replaces quizform
 }
+export const rendermyscore = function(score){
+  return`
+    <div id="recentscorepage">
+      <h1 class="title has-text-centered">Your Score</h1>
+      <div class = "box">
+        <h1 class="title has-text-centered">${score.genre}: ${score.score}/8 ${score.percent}%</h1>
+      </div>
+        <div class="control">
+        <input class="button is-info" id = "seeallscores"  value="See All Scores" />
+        </div>
+    </div>
+  `
+  //shows user the score they just got
+  //show all scores button
+}
+export const handlestartfresh= async function(event){
 
+}
+export const handleseeallscores = async function(event){
+  let $recentscorepage = $(event.target).closest("#recentscorepage");
+  let v = axios.get('http://localhost:3000/private/scores/',{headers: { Authorization: "Bearer " + window.jwt }});
+          v.then(response => {
+            console.log(response.data);
+            let users = response.data.result;
+                  let h = axios.get('http://localhost:3000/private/scores',{headers: { Authorization: "Bearer " + window.jwt }});
+                h.then(response => {
+                  console.log(response.data.result);
+                  let scorearrays = response.data.result;
+                  let allscores = [];
+                  for(let i = 0; i<users.length; i++){
+                    for(let u = 0; u<scorearrays[users[i]].length; u++){
+                      allscores.push(scorearrays[users[i]][u])
+                    }
+                  }
+                  console.log(allscores);
+                  $recentscorepage.replaceWith(renderscorepage(allscores))
+                }).catch(error => {
+                  console.log(error);
+                });
+          }).catch(error => {
+            console.log(error);
+          });
+
+  // let $recentscorepage = $(event.target).closest("#recentscorepage")
+  // $recentscorepage.replaceWith(`
+
+  // `)
+//shows all scores
+//start fresh button
+//back to profile button
+}
+export const takeanotherquiz = async function(event){
+  let $scorepage = $(event.target).closest("#scorepage");
+  $scorepage.replaceWith(`<div class="select" id="dropdown">
+  <select id="selectBox">
+    <option>Choose Genre</option>
+    <option>rap</option>
+    <option>pop</option>
+    <option>indie</option>
+    <option>rocknroll</option>
+    <option>country</option>
+    <option>hiphop</option>
+  </select>
+</div>`);
+
+}
 export const renderscorepage = function(scorearray){
-  let scorepage = `<div id="scorepage"><h1 class="title has-text-centered">My Scores</h1>`;
+  let scorepage = `<div id="scorepage"><h1 class="title has-text-centered">Scoreboard</h1>`;
   for(let r = 0; r<scorearray.length; r++){
     scorepage = scorepage+`
     
       <div class = "box">
-        <h1 class="title has-text-centered">${scorearray[r].genre}: ${scorearray[r].score}/8 ${scorearray[r].percent}%</h1>
+        <h1 class="title has-text-centered">${scorearray[r].user}: ${scorearray[r].genre}: ${scorearray[r].score}/8 ${scorearray[r].percent}%</h1>
       </div>
     `
   }
   scorepage = scorepage+ `<div class="control">
-  <input class="button is-danger" id = "delete_scores" type="submit" value="Delete all Scores" />
+  <input class="button is-danger" id = "startfresh"  value="Delete My Scores" />
+  <input class="button is-info" id = "takeanotherquiz"  value="Take another Quiz" />
   </div></div>`
   return scorepage;
   }
   export const handledeletescores = async function(event){
+    let h = axios.get('http://localhost:3000/account/status',
+    {headers: { Authorization: "Bearer " + window.jwt }},);
+    h.then(response => {
+    //console.log(response.data.user.name);
+    let userName = response.data.user.name;
     let $scorepage = $(event.target).closest("#scorepage");
-    let f = axios.delete('http://localhost:3000/private/scores',{headers: { Authorization: "Bearer " + window.jwt }});
-    f.then(response => {
-      console.log(response.data);
-    }).catch(error => {
-      console.log(error);
-    });
-    $scorepage.replaceWith(``)
+      let f = axios.delete('http://localhost:3000/private/scores/'+userName,{headers: { Authorization: "Bearer " + window.jwt }});
+      f.then(response => {
+        console.log(response.data);
+      }).catch(error => {
+        console.log(error);
+      });
+      $scorepage.replaceWith(`<div class="select" id="dropdown">
+      <select id="selectBox">
+        <option>Choose Genre</option>
+        <option>rap</option>
+        <option>pop</option>
+        <option>indie</option>
+        <option>rocknroll</option>
+        <option>country</option>
+        <option>hiphop</option>
+      </select>
+    </div>`)
     // let h = axios.get('http://localhost:3000/account/status',
     // {headers: { Authorization: "Bearer " + window.jwt }},);
     // h.then(response => {
@@ -885,10 +976,14 @@ export const renderscorepage = function(scorearray){
     // }).catch(error => {
     //   console.log(error);
     // });
+  }).catch(error => {
+    console.log(error);
+  });
   }
 //back to userprofile button=replacewith
 //on click submit button for login or signup - generate user profile - render html as jquery object, replace index with user profile object
 async function main(){
+    console.log("hello")
     window.$root = $('#root');
     let homepage = renderhomepage();
     $root.append(homepage)
@@ -897,6 +992,7 @@ async function main(){
       data: popQuestions
     });
     await j.then(response => {
+      console.log("hello")
       console.log(response.data);
     }).catch(error => {
       console.log(error);
@@ -956,6 +1052,9 @@ async function main(){
     $root.on("click", "#sample_submit", renderhomepage);
     $root.on("click", "#cancelquiz", handlecancelquiz);
     $root.on("click", "#submitquiz", handlesubmitquiz);
-    $root.on("click", "#delete_scores", handledeletescores);
+    $root.on("click", "#startfresh", handledeletescores);
+    $root.on("click", "#seeallscores", handleseeallscores)
+    $root.on("click", "#takeanotherquiz", takeanotherquiz)
 }
 main();
+
