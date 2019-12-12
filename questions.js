@@ -6,7 +6,7 @@ const popQuestions =[
             c: "NASA",
             d:"Break Up With Your Girlfriend, I'm Bored"
         },
-        correctAnswer: "a"
+        correctAnswer: "Thank U, Next"
 
     },
     {question: "Which Artist Released 'When We Are Asleep, Where Do We Go?'",
@@ -16,7 +16,7 @@ const popQuestions =[
             c: "Billie Eilish",
             d:"John Legend"
         },
-        correctAnswer: "c"
+        correctAnswer: "Billie Eilish"
     },
     {question: "What movie featured the song 'Sunflower' by Post Malone ft. Swae Lee>",
         answers:{
@@ -25,7 +25,7 @@ const popQuestions =[
             c: "Us",
             d: "Toy Story 4"
         },
-        correctAnswer: "a"
+        correctAnswer: "Spider-man: Into THe Spiderverse"
     },
     {question: "Finish the lyric: 'I've been dancing on top of cars and _____' (Sucker: The Jonas Brothers) ",
         answers:{
@@ -34,7 +34,7 @@ const popQuestions =[
             c: "driving electric cars",
             d: "flying rockets to mars"
         },
-        correctAnswer: "b"
+        correctAnswer: "stumbling out of bars"
     },
     {question: "Which artist was featured alongside Marshmallo in Happier?",
         answers:{
@@ -43,7 +43,7 @@ const popQuestions =[
             c: "Ed Sheeren",
             d: "Bastille"
         },
-        correctAnswer: "d"
+        correctAnswer: "Bastille"
     },
     {question: "Who is the lead singer of Maroon V?",
         answers:{
@@ -52,7 +52,7 @@ const popQuestions =[
             c: "Pete Davidson",
             d: "Sean Kingston"
         },
-        correctAnswer: "b"
+        correctAnswer: "Adam Levine"
     },
     {question: "What is the name of Taylor Swift's 7th Studio Album?",
         answers:{
@@ -61,7 +61,7 @@ const popQuestions =[
             c: "Her",
             d: "Me!"
         },
-        correctAnswer: "a"
+        correctAnswer: "Seven"
     },
     {question: "Who wasconsidered one of 2019's Break Out Pop Artists?",
         answers:{
@@ -70,7 +70,7 @@ const popQuestions =[
             c: "Charlie XCX",
             d: "Camilla Cabella"
         },
-        correctAnswer: "a"
+        correctAnswer: "Lizzo"
     },
 ] 
 const rockquestions = [
@@ -81,7 +81,7 @@ const rockquestions = [
         c: "Fats Domino",
         d: "Chuck Berry"
     },
-    correctAnswer: "a"
+    correctAnswer: "Jimi Hendrix"
 
 },
 {question: "What band name was also a term used in the 40's for UFOs?",
@@ -91,7 +91,7 @@ const rockquestions = [
         c: "Foo Fighters",
         d:"Metallica"
     },
-    correctAnswer: "c"
+    correctAnswer: "cFoo Fighters"
 },
 {question: "What musician left his band to join the cult Children of God?",
     answers:{
@@ -100,7 +100,7 @@ const rockquestions = [
         c: "Malcolm Young",
         d: "Eric Clapton"
     },
-    correctAnswer: "a"
+    correctAnswer: "Jeremy Spencer"
 },
 {question: "Which band name is made up of the first letter of each of its members' names?",
     answers:{
@@ -109,7 +109,7 @@ const rockquestions = [
         c: "The Arctic Monkeys",
         d: "Led Zeppelin"
     },
-    correctAnswer: "b"
+    correctAnswer: "ABBA"
 },
 {question: "Which artist was told to 'stick to driving a truck' at an audition for a local band?",
     answers:{
@@ -118,7 +118,7 @@ const rockquestions = [
         c: "Jimi Hendrix",
         d: "Elivs Pressly"
     },
-    correctAnswer: "d"
+    correctAnswer: "Elivs Pressly"
 },
 {question: "Who is the lead singer of U2?",
     answers:{
@@ -127,7 +127,7 @@ const rockquestions = [
         c: "James Brown",
         d: "Carl Perkins"
     },
-    correctAnswer: "b"
+    correctAnswer: "Bono"
 },
 {question: "What is the name of AC/DC's 7th Studio Album?",
     answers:{
@@ -136,7 +136,7 @@ const rockquestions = [
         c: "Back in Black",
         d: "High Voltage"
     },
-    correctAnswer: "a"
+    correctAnswer: "Highway to Hell"
 },
 {question: "What was the name of Pink Floyd's debut album?",
     answers:{
@@ -145,7 +145,7 @@ const rockquestions = [
         c: "The final cut",
         d: "The wall"
     },
-    correctAnswer: "a"
+    correctAnswer: "Piper at the Gates of Dawn"
 },
 ]
 const countryquestions = [
@@ -156,7 +156,7 @@ const countryquestions = [
         c: "Luke Bryan",
         d: "Dolly Parton"
     },
-    correctAnswer: "a"
+    correctAnswer: "Garth Brooks"
 
 },
 {question: "What was Florida Georgia Line's debut single?",
@@ -166,7 +166,7 @@ const countryquestions = [
         c: "Tip it Back",
         d:"Get Your Shine On"
     },
-    correctAnswer: "a"
+    correctAnswer: "Cruise"
 },
 {question: "Who was the first black performer at the Grand Ole Opry?",
     answers:{
@@ -175,7 +175,7 @@ const countryquestions = [
         c: "Charley Porter",
         d: "Ray Charles"
     },
-    correctAnswer: "a"
+    correctAnswer: "DeFord Bailey"
 },
 {question: "What is Darius Rucker's most played songs ever?",
     answers:{
@@ -184,7 +184,7 @@ const countryquestions = [
         c: "Ripcord",
         d: "Traveller"
     },
-    correctAnswer: "b"
+    correctAnswer: "Wagon Wheel"
 },
 {question: "What city's culture is centered around country music?",
     answers:{
@@ -193,7 +193,7 @@ const countryquestions = [
         c: "Kansas City",
         d: "Nashville"
     },
-    correctAnswer: "d"
+    correctAnswer: "Nashville"
 },
 {question: "Finish the lyric: 'Yeeeeeeeeeeah' I'm gonna take my horse to the: ",
     answers:{
@@ -202,7 +202,7 @@ const countryquestions = [
         c: "Bar",
         d: "Town for an old fashioned night out she deserves it."
     },
-    correctAnswer: "b"
+    correctAnswer: "Old town Road"
 },
 {question: "Who holds the record for the most performed country song of the year 2008-2010?",
     answers:{
@@ -211,7 +211,7 @@ const countryquestions = [
         c: "Johnny Cash",
         d: "Blake Shelton"
     },
-    correctAnswer: "b"
+    correctAnswer: "Taylor Swift"
 },
 {question: "What character did Johnny Cash voice on the Simpson's",
     answers:{
@@ -220,7 +220,7 @@ const countryquestions = [
         c: "Marge",
         d: "Billy"
     },
-    correctAnswer: "a"
+    correctAnswer: "a coyote"
 },
 ]
 
@@ -233,7 +233,7 @@ const indieQuestions =[
             c: "Andy Nicholson",
             d:"Brendan Urie"
         },
-        correctAnswer: "a"
+        correctAnswer: "Alex Turner"
 
     },
     {question: "Which Artist Released 'Texas Sun'",
@@ -243,7 +243,7 @@ const indieQuestions =[
             c: "Leon Bridges",
             d:"Lake Street Drive"
         },
-        correctAnswer: "c"
+        correctAnswer: "Leon Bridges"
     },
     {question: "What movie featured the song 'Supercut' by Lorde>",
         answers:{
@@ -252,7 +252,7 @@ const indieQuestions =[
             c: "Ad Astra",
             d: "The Farewell"
         },
-        correctAnswer: "a"
+        correctAnswer: "Someone Great"
     },
     {question: "Finish the lyric: 'And when my fear pulls me out to sea, And the stars are hidden by ______' (Sucker: The Jonas Brothers) ",
         answers:{
@@ -261,7 +261,7 @@ const indieQuestions =[
             c: "my mind and my legacies",
             d: "my life and my necessities"
         },
-        correctAnswer: "b"
+        correctAnswer: "my pride and my enemies"
     },
     {question: "Which artist released 'Father of the Bride' in 2019?",
         answers:{
@@ -270,7 +270,7 @@ const indieQuestions =[
             c: "Mumford & Sons",
             d: "Bastille"
         },
-        correctAnswer: "a"
+        correctAnswer: "Vampire Weekend"
     },
     {question: "What was the name of Jade-Bird's album released in 2019?",
         answers:{
@@ -279,7 +279,7 @@ const indieQuestions =[
             c: "My Motto",
             d: "Bird-Jade"
         },
-        correctAnswer: "b"
+        correctAnswer: "Jade-Bird"
     },
     {question: "Which song was released in 2019 by Pheobe Bridgers?",
         answers:{
@@ -288,7 +288,7 @@ const indieQuestions =[
             c: "Stay Down",
             d: "You Missed My Heart"
         },
-        correctAnswer: "a"
+        correctAnswer: "Forest Lawn"
     },
     {question: "Who was considered one of 2019's Breakout Indie Artists?",
         answers:{
@@ -297,7 +297,7 @@ const indieQuestions =[
             c: "Charlie XCX",
             d: "Tame Impala"
         },
-        correctAnswer: "b"
+        correctAnswer: "Jade-Bird"
     },
 ]    
 const hipHopQuestions =[
@@ -308,7 +308,7 @@ const hipHopQuestions =[
             c: "ye",
             d:"Jesus is King"
         },
-        correctAnswer: "d"
+        correctAnswer: "Jesus is King"
 
     },
     {question: "Which Artist Released 'Look Back at it'",
@@ -318,7 +318,7 @@ const hipHopQuestions =[
             c: "Offset",
             d:"Cardi B"
         },
-        correctAnswer: "a"
+        correctAnswer: "A Boogie Wit da Hoodie"
     },
     {question: "What movie featured the song 'Power' by Kanye West>",
         answers:{
@@ -327,7 +327,7 @@ const hipHopQuestions =[
             c: "Fast and Furious 7",
             d: "Straight Outta Compton"
         },
-        correctAnswer: "b"
+        correctAnswer: "The Bling Ring"
     },
     {question: "Finish the lyric: 'Yeeeeeeeeeeeeeeeeeee I'm gon' take my horse to the _____' (Old Town Road: Lil Nas X) ",
         answers:{
@@ -336,7 +336,7 @@ const hipHopQuestions =[
             c: "vet to see if there are any lingering problems",
             d: "horse race; she's the fastest horse alive!"
         },
-        correctAnswer: "a"
+        correctAnswer: "old town road"
     },
     {question: "Which artist was featured alongside Post Malone in Psycho?",
         answers:{
@@ -345,7 +345,7 @@ const hipHopQuestions =[
             c: "Ed Sheeren",
             d: "Ty Dolla $ign"
         },
-        correctAnswer: "d"
+        correctAnswer: "Ty Dolla $ign"
     },
     {question: "Who is the most listened to female hip-hop artist of 2019?",
         answers:{
@@ -354,7 +354,7 @@ const hipHopQuestions =[
             c: "Cardi B",
             d: "Riskay"
         },
-        correctAnswer: "c"
+        correctAnswer: "Cardi B"
     },
     {question: "What is the name of Drake's oldest album?",
         answers:{
@@ -363,7 +363,7 @@ const hipHopQuestions =[
             c: "Views",
             d: "Best I Ever Had"
         },
-        correctAnswer: "a"
+        correctAnswer: "Disarming Violence"
     },
     {question: "Who is the most listened to Hip-Hop Song of the Week?",
         answers:{
@@ -372,7 +372,7 @@ const hipHopQuestions =[
             c: "Heartless: The Weeknd",
             d: "Dance Monkey: Tones and I"
         },
-        correctAnswer: "c"
+        correctAnswer: "Heartless: The Weeknd"
     },
 ]    
 
@@ -384,7 +384,7 @@ const rapQuestions =[
             c: "Acid Rap",
             d: "10 Day"
         },
-        correctAnswer: "a"
+        correctAnswer: "The Big Day"
 
     },
     {question: "Which Artist Released 'Talk It Walk It'",
@@ -394,7 +394,7 @@ const rapQuestions =[
             c: "Takeoff",
             d: "All of the above"
         },
-        correctAnswer: "d"
+        correctAnswer: "All of the above"
     },
     {question: "What was Dr. Dre's most streamed song?",
         answers:{
@@ -403,7 +403,7 @@ const rapQuestions =[
             c: "Forget About Dre",
             d: "I need a Doctor"
         },
-        correctAnswer: "a"
+        correctAnswer: "Still DRE"
     },
     {question: "Finish the lyric: 'Yeeeeeeeeeeeeeeeeeee I'm gon' take my horse to the _____' (Old Town Road: Lil Nas X) ",
         answers:{
@@ -412,7 +412,7 @@ const rapQuestions =[
             c: "vet to see if there are any lingering problems",
             d: "horse race; she's the fastest horse alive!"
         },
-        correctAnswer: "a"
+        correctAnswer: "old town road"
     },
     {question: "What is considered the greatest crossover of artists in Rap History?",
         answers:{
@@ -421,7 +421,7 @@ const rapQuestions =[
             c: "Forever feat. Drake, Kanye West, Lil Wayne, Eminem",
             d: "Childish Gambino: Childish Gambino"
         },
-        correctAnswer: "c"
+        correctAnswer: "Forever feat. Drake, Kanye West, Lil Wayne, Eminem"
     },
     {question: "Who is featured in the background of Nice For What: Drake?",
         answers:{
@@ -430,7 +430,7 @@ const rapQuestions =[
             c: "Lizzo",
             d: "Riskay"
         },
-        correctAnswer: "a"
+        correctAnswer: "Missy Elliot"
     },
     {question: "What is the name of Kendrick Lamar's first Mixtape?",
         answers:{
@@ -439,7 +439,7 @@ const rapQuestions =[
             c: "DAMN",
             d: "To Pimp A Butterfly"
         },
-        correctAnswer: "a"
+        correctAnswer: "Y.H.N.I.C"
     },
     {question: "Who did Logic feature in his albums?",
         answers:{
@@ -448,6 +448,6 @@ const rapQuestions =[
             c: "Cardi B",
             d: "Neil Degrasse Tyson"
         },
-        correctAnswer: "d"
+        correctAnswer: "Neil Degrasse Tyson"
     },
 ] 
