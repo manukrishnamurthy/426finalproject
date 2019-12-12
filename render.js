@@ -1,75 +1,11 @@
-//const userData = require("./data");
-let personid = 0;
-// function getInfo() {
-//     let username = document.getElementById("#username");
 
-//     let email = document.getElementById("#email");
-//     alert(email)
-//     let password = document.getElementById("#password");
-//     let artist1 = document.getElementById("#artist1");
-//     let artist2 = document.getElementById("#artist2");
-//     let artist3 = document.getElementById("#artist3");
-//     let genre1 = document.getElementById("#genre1");
-//     let genre2 = document.getElementById("#genre2");
-//     let genre3 = document.getElementById("genre3");
-//     let raingenre = document.getElementById("RainGenre");
-//     let workout1 = document.getElementById("workout1");
-//     let workout2 = document.getElementById("workout2");
-//     let workout3 = document.getElementById("workout3");
-//     let sadboi = document.getElementById("sadboi");
-//     let firstsong = document.getElementById("firstsong");
-//     let momsong = document.getElementById("momsong");
-//     let underalbum = document.getElementById("underalbum");
-//     let guiltygenre = document.getElementById("guiltygenre");
-//     let concertartist = document.getElementById("concertartist");
-//     let leastfav = document.getElementById("leastfav");
-
-//     let person = new Object();
-//     person.username = username;
-//     person.email = email;
-//     person.password = password;
-//     person.artist1 = artist1;
-//     person.artist2 = artist2;
-//     person.artist3 = artist3;
-//     person.genre1 = genre1;
-//     person.genre2 = genre2;
-//     person.genre3 = genre3;
-//     person.raingenre = raingenre;
-//     person.workout1 = workout1;
-//     person.workout2 = workout2;
-//     person.workout3 = workout3;
-//     person.sadboi = sadboi;
-//     person.firstsong = firstsong;
-//     person.momsong = momsong;
-//     person.underalbum = underalbum;
-//     person.guiltygenre = guiltygenre;
-//     person.concertartist = concertartist;
-//     person.leastfav = leastfav;
-//     let exists = 0;
-//     for(let j = 0; j<userData.length; j++){
-//       alert("hi")
-//       let maxid = 0;
-//         if(userData[j].email==person.email){
-//           alert("An account with that email has already been created, please try again");
-//           exists=1;
-//         }
-//         if(userData[j].id>maxid){
-//           maxid = userData[j].id;
-//         }
-//         //check to make sure that account doesn't already exist
-//     }
-//     if(exists==0){
-//       person.id = maxid+1;
-//     }
-//     //userData.append(person);
-//     // Append the 'person' object to the data.js file with all of the users. Not sure how to link
-//     personid = person.id;
-// }
+let counter = 0;
 export const renderhomepage=function(){
     return `
     <section class="section has-background-primary" >
     <form id="homepage">
-      <h1 class="title has-text-white">Genre Search</h1>
+      <h1 class="title has-text-white">Sample Quiz Genre Search</h1>
+
         <div class="columns">
           <div id="genresearchhomepage" class="column is-11">
             <input class="input" type="search" id="txt-search" placeholder="Hip-hop">
@@ -77,13 +13,14 @@ export const renderhomepage=function(){
           <div class="column is-1">
             <div class="field">
               <div class="control">
-                  <input class="button is-dark" id = "genresubmit" type="submit" />
+                  <input class="button is-dark" id = "genresubmit" type="submit" value="Search" />
               </div>
             </div>
-            </div>
           </div>
-            <label class="label" id="matches"></label>
+            
         </div>
+        <label class="label" id="matches"></label>
+
     <div class="columns">
             <div class="column">
                 <h1 class="title has-text-white">Signup</h1>
@@ -191,6 +128,7 @@ export const renderhomepage=function(){
                         </div>
                         <br>
                     </div>
+
                     <div class="field">
                         <div class="control">
                             <input class="button is-dark" id = "signupsubmit" type="submit" />
@@ -225,67 +163,67 @@ export const renderhomepage=function(){
     </form>
     </section>`
 }
-export const renderquizpage = function(questions){
-  return `<div class="section">
-  <h1 class = "title">Twitter Quiz</h1>
-  </div>`
-}
+// export const renderquizpage = function(questions){
+//   return `<div class="section">
+//   <h1 class = "title">Twitter Quiz</h1>
+//   </div>`
+// }
 
-export const renderquizpop = function(){
-  return`<div id="quizpop">
-  <section class="section">
-    <div class="container">
-    <h1 class="title is-1 has-text-white">Pop Music Quiz</h1>  
-        <div class="content">
-          <div class="subtitle">
-          <form>
-            <ol type="1">
-              <li class="">Which artist recently had a song featured on a Spiderman movie?</li>
-                <div class="control">
-                  <label class="radio">
-                    <input type="radio" name="answer">
-                    Post Malone
-                  </label>
-                  <label class="radio">
-                    <input type="radio" name="answer">
-                    Khalid
-                  </label>
-                </div>
-              <li class="">In his album No. 6 Collaborations Project, who did Ed Sheeran not partner with?</li>
-              <div class="control">
-                <label class="radio">
-                  <input type="radio" name="answer">
-                  Camila Cabello
-                </label>
-                <label class="radio">
-                  <input type="radio" name="answer">
-                  Ella Mai
-                </label>
-                <label class="radio">
-                  <input type="radio" name="answer">
-                  Ariana Grande                
-                  </label>
-              </div>  
-              <li class="">What album did Khalid release in 2019?</li>
-                <div class="select">
-                  <select>
-                    <option>Select</option>
-                    <option>Free Spirit</option>
-                    <option>American Teen</option>
-                    <option>Suncity</option>
-                  </select>
-              </div>
-            </ol>
-          </div>
-          <button class="button is-medium" style="primary" data-id="" id="submitquiz" type="">Submit</button>
-          </form>
-        </div>
-    </div>
-  </section>
-  </div>`
-}
+// export const renderquizpop = function(){
+//   return`<div id="quizpop">
+//   <section class="section">
+//     <div class="container">
+//     <h1 class="title is-1 has-text-white">Pop Music Quiz</h1>  
+//         <div class="content">
+//           <div class="subtitle">
+//           <form>
+//             <ol type="1">
+//               <li class="">Which artist recently had a song featured on a Spiderman movie?</li>
+//                 <div class="control">
+//                   <label class="radio">
+//                     <input type="radio" name="answer">
+//                     Post Malone
+//                   </label>
+//                   <label class="radio">
+//                     <input type="radio" name="answer">
+//                     Khalid
+//                   </label>
+//                 </div>
+//               <li class="">In his album No. 6 Collaborations Project, who did Ed Sheeran not partner with?</li>
+//               <div class="control">
+//                 <label class="radio">
+//                   <input type="radio" name="answer">
+//                   Camila Cabello
+//                 </label>
+//                 <label class="radio">
+//                   <input type="radio" name="answer">
+//                   Ella Mai
+//                 </label>
+//                 <label class="radio">
+//                   <input type="radio" name="answer">
+//                   Ariana Grande                
+//                   </label>
+//               </div>  
+//               <li class="">What album did Khalid release in 2019?</li>
+//                 <div class="select">
+//                   <select>
+//                     <option>Select</option>
+//                     <option>Free Spirit</option>
+//                     <option>American Teen</option>
+//                     <option>Suncity</option>
+//                   </select>
+//               </div>
+//             </ol>
+//           </div>
+//           <button class="button is-medium" style="primary" data-id="" id="submitquiz" type="">Submit</button>
+//           </form>
+//         </div>
+//     </div>
+//   </section>
+//   </div>`
+// }
+//add in checkbox options for genre to take quiz in
 export const renderuserprofile = function(user){
-        //use user information from data.js or person object to construct user rpofile
         return`<div id="userprofile">
         <div class="columns">
           <div class="column is-four-fifths">  
@@ -403,13 +341,21 @@ export const renderuserprofile = function(user){
           <section class="section">
           <div class="container">
             <div class="content">
-              <button class="button is-medium" style="primary" data-id="${user.id}" id="renderquiz" type="submit">Take Quiz</button>
               <button class="button is-medium is-dark" style="primary" data-id="${user.id}" id="updateprofile">Update Profile</button>
             </div>
-            <div class="content">
-              <h2 class="title is-2">your quizzes</h2>
-            </div>
           </div>
+          <br>
+          <div class="select">
+              <select id="selectBox">
+                <option>Choose Genre</option>
+                <option>rap</option>
+                <option>pop</option>
+                <option>indie</option>
+                <option>rocknroll</option>
+                <option>country</option>
+                <option>hiphop</option>
+              </select>
+            </div>
           </section>
         </div>`
 }
@@ -446,13 +392,71 @@ export const handlesignout = async function(event){
   //axios request to backend to sign out
   $userprofile.replaceWith(renderhomepage);
 }
-
-export const handlerenderquiz = async function(event){
-  const $genresearch = $(event.target).closest('#txt-search');
-  // let infoarray = $genresearch.serializeArray();
+export const handleSearchQuiz = async function(event){
+  // ID is "matches" to move to the sample quiz page
+  event.preventDefault();
+  let $homepage = $(event.target).closest("#homepage")
   
-  // console.log(infoarray);
+  let title = document.getElementById("matches").textContent;
+  console.log(title);
+
+  let h = axios.get('http://localhost:3000/public/'+title,
+  );
+  await h.then(response => {
+    console.log(response.data);
+    let quizarray = response.data.result;
+    let samplequizpage = renderSampleQuiz(quizarray);
+    $homepage.replaceWith(samplequizpage);
+
+  }).catch(error => {
+    console.log(error);
+  });
 }
+
+export const renderSampleQuiz = function(quiz){
+  return `
+  <h3>Sample Quiz I</h3>
+  <form id = 'sample_quiz' enctype="text/plain">
+  
+  This quiz is only a sample quiz. Since you are not logged in, you will not be able to submit these answers.
+  
+  <P>${quiz[0].question}<BR>
+  <input type="radio">${quiz[0].answers.a}<BR>
+  <input type="radio">${quiz[0].answers.b}<BR>
+  <input type="radio">${quiz[0].answers.c}<BR>
+  <input type="radio">${quiz[0].answers.d}<BR>
+  </p>
+  
+  <P>${quiz[1].question}<BR>
+  <input type="radio">${quiz[1].answers.a}<BR>
+  <input type="radio">${quiz[1].answers.b}<BR>
+  <input type="radio">${quiz[1].answers.c}<BR>
+  <input type="radio">${quiz[1].answers.d}<BR>
+  </p>
+  
+  <P>${quiz[2].question}<BR>
+  <input type="radio" name="1.The word which means house is">${quiz[2].answers.a}<BR>
+  <input type="radio" name="1.The word which means house is">${quiz[2].answers.b}<BR>
+  <input type="radio" name="1.The word which means house is">${quiz[2].answers.c}<BR>
+  <input type="radio" name="1.The word which means house is">${quiz[2].answers.d}<BR>
+  </p>
+  
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="control">
+  <input class="button is-dark" id = "sample_submit" type = "submit" value="Return to Homepage">
+  </div>
+  </form>
+  `
+}
+// export const handlerenderquiz = async function(event){
+//   const $genresearch = $(event.target).closest('#txt-search');
+//   // let infoarray = $genresearch.serializeArray();
+  
+//   // console.log(infoarray);
+// }
 export const handlesignupsubmit = async function(event){
   event.preventDefault();
   //getInfo();
@@ -537,67 +541,6 @@ export const handleupdateprofile = async function(event){
     console.log(error);
   });
 }
-
-export const handleSearchQuiz = async function(event){
-  // ID is "matches" to move to the sample quiz page
-  let $homepage = $(event.target).closest("#homepage")
-  event.preventDefault();
-  let title = document.getElementById("matches").textContent;
-  console.log(title);
-
-  let h = axios.get('http://localhost:3000/public/'+title,
-  );
-  await h.then(response => {
-    console.log(response.data);
-    let quizarray = response.data.result;
-    let samplequizpage = renderSampleQuiz(quizarray);
-    $homepage.replaceWith(samplequizpage);
-
-  }).catch(error => {
-    console.log(error);
-  });
-}
-
-export const renderSampleQuiz = function(quiz){
-  return `
-  <h3>Sample Quiz I</h3>
-  <form id = 'sample_quiz' enctype="text/plain">
-  
-  This quiz is only a sample quiz. Since you are not logged in, you will not be able to submit these answers.
-  
-  <P>${quiz[0].question}<BR>
-  <input type="radio">${quiz[0].answers.a}<BR>
-  <input type="radio">${quiz[0].answers.b}<BR>
-  <input type="radio">${quiz[0].answers.c}<BR>
-  <input type="radio">${quiz[0].answers.d}<BR>
-  </p>
-  
-  <P>${quiz[1].question}<BR>
-  <input type="radio">${quiz[1].answers.a}<BR>
-  <input type="radio">${quiz[1].answers.b}<BR>
-  <input type="radio">${quiz[1].answers.c}<BR>
-  <input type="radio">${quiz[1].answers.d}<BR>
-  </p>
-  
-  <P>${quiz[2].question}<BR>
-  <input type="radio" name="1.The word which means house is">${quiz[2].answers.a}<BR>
-  <input type="radio" name="1.The word which means house is">${quiz[2].answers.b}<BR>
-  <input type="radio" name="1.The word which means house is">${quiz[2].answers.c}<BR>
-  <input type="radio" name="1.The word which means house is">${quiz[2].answers.d}<BR>
-  </p>
-  
-  <br>
-  <br>
-  <br>
-  <br>
-  <div class="control">
-  <input class="button is-dark" id = "sample_submit" type = "submit" value="Return to Homepage">
-  </div>
-  </form>
-  `
-}
-
-
 export const renderupdateform = function(user){
   return`<form id="updateform" data-id = ${user.username}>
   <div class="field">
@@ -678,6 +621,7 @@ export const renderupdateform = function(user){
       </div>
       <br>
   </div>
+
   <div class="field">
       <div class="control">
           <input class="button is-dark" id = "updatesubmit" type="submit" />
@@ -732,73 +676,286 @@ export const handleupdatesubmit= async function(event){
   $update.replaceWith(renderuserprofile(usertoupdate));
 
 }
+export const handlegeneratequiz = async function(event){
+  
+  let $userprofile = $(event.target).closest("#userprofile");
+  var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+  let j = axios.get('http://localhost:3000/public/'+selectedValue,);
+    await j.then(response => {
+      console.log(response.data);
+      let quizpage = renderquiz(response.data.result, selectedValue);
+      $userprofile.append(quizpage);
+      // if(counter==0){$userprofile.append(quizpage); counter = counter+1;}
+      // else{ 
+      //   console.log("hello")
+      //   let $renderedquiz = $(event.target).closest("#quizform");
+      //   console.log($renderedquiz)
+      //   console.log(quizpage)
+      //   $renderedquiz.replaceWith();
+      // }
+    }).catch(error => {
+      console.log(error);
+    });
+}
+export const renderquiz = function(quizarray, quiztype){
+  return`
+  <form id = "quizform" data-id=${quiztype} enctype="text/plain">
+  <h1 class="title has-text-white">Quiz!</h1>
+  
+  <h2 class="subtitle has-text-white">${quizarray[0].question}</h2>
+  <input type="radio" name="answer0" value = "${quizarray[0].answers.a}">${quizarray[0].answers.a}<BR>
+  <input type="radio" name="answer0" value = "${quizarray[0].answers.b}">${quizarray[0].answers.b}<BR>
+  <input type="radio" name="answer0" value = "${quizarray[0].answers.c}">${quizarray[0].answers.c}<BR>
+  <input type="radio" name="answer0" value = "${quizarray[0].answers.d}">${quizarray[0].answers.d}<BR>
+  <br>
+  <h2 class="subtitle has-text-white">${quizarray[1].question}</h2>
+  <input type="radio" name="answer1" value = "${quizarray[1].answers.a}">${quizarray[1].answers.a}<BR>
+  <input type="radio" name="answer1" value = "${quizarray[1].answers.b}">${quizarray[1].answers.b}<BR>
+  <input type="radio" name="answer1" value = "${quizarray[1].answers.c}">${quizarray[1].answers.c}<BR>
+  <input type="radio" name="answer1" value = "${quizarray[1].answers.d}">${quizarray[1].answers.d}<BR>
+  <br>
+  <h2 class="subtitle has-text-white">${quizarray[2].question}</h2>
+  <input type="radio" name="answer2" value = "${quizarray[2].answers.a}">${quizarray[2].answers.a}<BR>
+  <input type="radio" name="answer2" value = "${quizarray[2].answers.b}">${quizarray[2].answers.b}<BR>
+  <input type="radio" name="answer2" value = "${quizarray[2].answers.c}">${quizarray[2].answers.c}<BR>
+  <input type="radio" name="answer2" value = "${quizarray[2].answers.d}">${quizarray[2].answers.d}<BR>
+  <br>
+  <h2 class="subtitle has-text-white">${quizarray[3].question}</h2>
+  <input type="radio" name="answer3" value = "${quizarray[3].answers.a}">${quizarray[3].answers.a}<BR>
+  <input type="radio" name="answer3" value = "${quizarray[3].answers.b}">${quizarray[3].answers.b}<BR>
+  <input type="radio" name="answer3" value = "${quizarray[3].answers.c}">${quizarray[3].answers.c}<BR>
+  <input type="radio" name="answer3" value = "${quizarray[3].answers.d}">${quizarray[3].answers.d}<BR>
+  <br>
+  <h2 class="subtitle has-text-white">${quizarray[4].question}</h2>
+  <input type="radio" name="answer4" value = "${quizarray[4].answers.a}">${quizarray[4].answers.a}<BR>
+  <input type="radio" name="answer4" value = "${quizarray[4].answers.b}">${quizarray[4].answers.b}<BR>
+  <input type="radio" name="answer4" value = "${quizarray[4].answers.c}">${quizarray[4].answers.c}<BR>
+  <input type="radio" name="answer4" value = "${quizarray[4].answers.d}">${quizarray[4].answers.d}<BR>
+  <br>
+  <h2 class="subtitle has-text-white">${quizarray[5].question}</h2>
+  <input type="radio" name="answer5" value = "${quizarray[5].answers.a}">${quizarray[5].answers.a}<BR>
+  <input type="radio" name="answer5" value = "${quizarray[5].answers.b}">${quizarray[5].answers.b}<BR>
+  <input type="radio" name="answer5" value = "${quizarray[5].answers.c}">${quizarray[5].answers.c}<BR>
+  <input type="radio" name="answer5" value = "${quizarray[5].answers.d}">${quizarray[5].answers.d}<BR>
+  <br>
+  <h2 class="subtitle has-text-white" value=${quizarray[6].question}>${quizarray[6].question}</h2>
+  <input type="radio" name="answer6" value = "${quizarray[6].answers.a}">${quizarray[6].answers.a}<BR>
+  <input type="radio" name="answer6" value = "${quizarray[6].answers.b}">${quizarray[6].answers.b}<BR>
+  <input type="radio" name="answer6" value = "${quizarray[6].answers.c}">${quizarray[6].answers.c}<BR>
+  <input type="radio" name="answer6" value = "${quizarray[6].answers.d}">${quizarray[6].answers.d}<BR>
+  <br>
+  <h2 class="subtitle has-text-white">${quizarray[7].question}</h2>
+  <input type="radio" name="answer7" value = "${quizarray[7].answers.a}">${quizarray[7].answers.a}<BR>
+  <input type="radio" name="answer7" value = "${quizarray[7].answers.b}">${quizarray[7].answers.b}<BR>
+  <input type="radio" name="answer7" value = "${quizarray[7].answers.c}">${quizarray[7].answers.c}<BR>
+  <input type="radio" name="answer7" value = "${quizarray[7].answers.d}">${quizarray[7].answers.d}<BR>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="control">
+  <input class="button is-danger" id = "cancelquiz" type = "cancel" value="Cancel">
+  <input class="button is-info" id = "submitquiz"  value="Submit">
+  </div>
+  </form>
+  `
+}
+export const handlecancelquiz = async function(event){
+  let $quizform = $(event.target).closest("#quizform");
+  $quizform.replaceWith(``)
+}
+export const handlesubmitquiz = async function(event){
 
+  let $quizform = $(event.target).closest("#quizform");
+  const quiztype = $quizform.data('id');
+  let buttonval = $("#quizform").find("input[name='answer0']:checked").val();
+  //console.log(buttonval);
+  let buttonval1 = $("#quizform").find("input[name='answer1']:checked").val();
+  //console.log(buttonval1)
+  let buttonval2 = $("#quizform").find("input[name='answer2']:checked").val();
+  //console.log(buttonval2);
+  let buttonval3 = $("#quizform").find("input[name='answer3']:checked").val();
+  //console.log(buttonval3)
+  let buttonval4 = $("#quizform").find("input[name='answer4']:checked").val();
+  //console.log(buttonval4)
+  let buttonval5 = $("#quizform").find("input[name='answer5']:checked").val();
+  //console.log(buttonval5);
+  let buttonval6 = $("#quizform").find("input[name='answer6']:checked").val();
+  //console.log(buttonval6)
+  let buttonval7 = $("#quizform").find("input[name='answer7']:checked").val();
+ // console.log(buttonval7)
+ let useranswers = [buttonval, buttonval1, buttonval2, buttonval3, buttonval4, buttonval5, buttonval6, buttonval7];
+  let j = axios.get('http://localhost:3000/public/'+quiztype,);
+  await j.then(response => {
+    console.log(response.data.result);
+    let questionarray = response.data.result;
+    let correctanswers = [];
+    for(let y = 0; y<questionarray.length; y++){
+        correctanswers.push(questionarray[y].correctAnswer);
+    }
+    let scorevar = 0;
+    for(let u = 0; u<8; u++){
+      if(correctanswers[u]==useranswers[u]){
+        scorevar = scorevar+1;
+      }
+      else{
+        console.log(useranswers[u])
+        console.log(correctanswers[u])
+      }
+    }
+    let h = axios.get('http://localhost:3000/account/status',
+    {headers: { Authorization: "Bearer " + window.jwt }},);
+    h.then(response => {
+    //console.log(response.data.user.name);
+    let userName = response.data.user.name;
+    let Quiz = new Object;
+    let percentage = (scorevar / 8)*100;
+    Quiz.user = userName;
+    Quiz.score = scorevar;
+    Quiz.percent = percentage;
+    Quiz.genre = quiztype;
+          let v = axios.post('http://localhost:3000/private/scores',
+          {
+            data: Quiz,
+            type: "merge"
+          },{headers: { Authorization: "Bearer " + window.jwt }});
+          v.then(response => {
+            //console.log(response.data);
+          }).catch(error => {
+            console.log(error);
+          });
+          let f = axios.get('http://localhost:3000/private/scores',{headers: { Authorization: "Bearer " + window.jwt }});
+          f.then(response => {
+            //console.log(response.data.result);
+            let scorearray = response.data.result;
+            let userscorearray = [];
+            for(let h = 0; h<scorearray.length; h++){
+              if(scorearray[h].user==userName){
+                userscorearray.push(scorearray[h])
+              }
+            }
+            //console.log(userscorearray);
+            $quizform.replaceWith(renderscorepage(userscorearray))
+          }).catch(error => {
+            console.log(error);
+          });
+    }).catch(error => {
+      console.log(error);
+    });
+    console.log(scorevar)
+  }).catch(error => {
+    console.log(error);
+  });
+
+
+  //get request to private datastore for array of score objects
+  //create array of score objects from response with userName = username in score object
+  //call renderscorepage function - replaces quizform
+}
+
+export const renderscorepage = function(scorearray){
+  let scorepage = `<div id="scorepage"><h1 class="title has-text-centered">My Scores</h1>`;
+  for(let r = 0; r<scorearray.length; r++){
+    scorepage = scorepage+`
+    
+      <div class = "box">
+        <h1 class="title has-text-centered">${scorearray[r].genre}: ${scorearray[r].score}/8 ${scorearray[r].percent}%</h1>
+      </div>
+    `
+  }
+  scorepage = scorepage+ `<div class="control">
+  <input class="button is-danger" id = "delete_scores" type="submit" value="Delete all Scores" />
+  </div></div>`
+  return scorepage;
+  }
+  export const handledeletescores = async function(event){
+    let $scorepage = $(event.target).closest("#scorepage");
+    let f = axios.delete('http://localhost:3000/private/scores',{headers: { Authorization: "Bearer " + window.jwt }});
+    f.then(response => {
+      console.log(response.data);
+    }).catch(error => {
+      console.log(error);
+    });
+    $scorepage.replaceWith(``)
+    // let h = axios.get('http://localhost:3000/account/status',
+    // {headers: { Authorization: "Bearer " + window.jwt }},);
+    // h.then(response => {
+    //   console.log(response.data.user.data);
+    //   renderuserprofile(response.data.user.data)
+    // }).catch(error => {
+    //   console.log(error);
+    // });
+  }
+//back to userprofile button=replacewith
 //on click submit button for login or signup - generate user profile - render html as jquery object, replace index with user profile object
 async function main(){
-  window.$root = $('#root');
-  let homepage = renderhomepage();
-  $root.append(homepage)
-  let j = axios.post('http://localhost:3000/public/pop',
-  {
-    data: popQuestions
-  });
-  await j.then(response => {
-    console.log(response.data);
-  }).catch(error => {
-    console.log(error);
-  });
-  let r = axios.post('http://localhost:3000/public/rocknroll',
-  {
-    data: rockquestions
-  });
-  await r.then(response => {
-    console.log(response.data);
-  }).catch(error => {
-    console.log(error);
-  });
-  let k = axios.post('http://localhost:3000/public/country',
-  {
-    data: countryquestions
-  });
-  await k.then(response => {
-    console.log(response.data);
-  }).catch(error => {
-    console.log(error);
-  });
-  let l = axios.post('http://localhost:3000/public/indie',
-  {
-    data: indieQuestions
-  });
-  await l.then(response => {
-    console.log(response.data);
-  }).catch(error => {
-    console.log(error);
-  });
-  let m = axios.post('http://localhost:3000/public/rap',
-  {
-    data: rapQuestions
-  });
-  await m.then(response => {
-    console.log(response.data);
-  }).catch(error => {
-    console.log(error);
-  });
-  let v = axios.post('http://localhost:3000/public/hiphop',
-  {
-    data: hipHopQuestions
-  });
-  await v.then(response => {
-    console.log(response.data);
-  }).catch(error => {
-    console.log(error);
-  });
-  $root.on("click", "#loginsubmit", handleloginsubmit);
-  $root.on("click", "#signupsubmit", handlesignupsubmit);
-  $root.on("click", "#signout", handlesignout);
-  $root.on("click", "#renderquiz", handlerenderquiz);
-  $root.on("click", "#genresubmit", handleSearchQuiz);
-  $root.on("click", "#updateprofile", handleupdateprofile);
-  $root.on("click", "#updatesubmit", handleupdatesubmit);
-  $root.on("click", "#sample_submit", renderhomepage);
+    window.$root = $('#root');
+    let homepage = renderhomepage();
+    $root.append(homepage)
+    let j = axios.post('http://localhost:3000/public/pop',
+    {
+      data: popQuestions
+    });
+    await j.then(response => {
+      console.log(response.data);
+    }).catch(error => {
+      console.log(error);
+    });
+    let r = axios.post('http://localhost:3000/public/rocknroll',
+    {
+      data: rockquestions
+    });
+    await r.then(response => {
+      console.log(response.data);
+    }).catch(error => {
+      console.log(error);
+    });
+    let k = axios.post('http://localhost:3000/public/country',
+    {
+      data: countryquestions
+    });
+    await k.then(response => {
+      console.log(response.data);
+    }).catch(error => {
+      console.log(error);
+    });
+    let l = axios.post('http://localhost:3000/public/indie',
+    {
+      data: indieQuestions
+    });
+    await l.then(response => {
+      console.log(response.data);
+    }).catch(error => {
+      console.log(error);
+    });
+    let m = axios.post('http://localhost:3000/public/rap',
+    {
+      data: rapQuestions
+    });
+    await m.then(response => {
+      console.log(response.data);
+    }).catch(error => {
+      console.log(error);
+    });
+    let v = axios.post('http://localhost:3000/public/hiphop',
+    {
+      data: hipHopQuestions
+    });
+    await v.then(response => {
+      console.log(response.data);
+    }).catch(error => {
+      console.log(error);
+    });
+    $root.on("click", "#loginsubmit", handleloginsubmit);
+    $root.on("click", "#signupsubmit", handlesignupsubmit);
+    $root.on("click", "#signout", handlesignout);
+    $root.on("click", "#updateprofile", handleupdateprofile);
+    $root.on("click", "#updatesubmit", handleupdatesubmit);
+    $root.on("change", "#selectBox", handlegeneratequiz)
+    $root.on("click", "#genresubmit", handleSearchQuiz);
+    $root.on("click", "#sample_submit", renderhomepage);
+    $root.on("click", "#cancelquiz", handlecancelquiz);
+    $root.on("click", "#submitquiz", handlesubmitquiz);
+    $root.on("click", "#delete_scores", handledeletescores);
 }
 main();
